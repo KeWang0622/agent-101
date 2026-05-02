@@ -1,7 +1,7 @@
 # agent-101
 
 **Build a Claude-Code-shaped agent harness from scratch.**
-*18 chapters · ~3,000 lines of Python · 3 LLM providers · 36 tests · zero frameworks.*
+*7-week course · 19 chapters · ~4,500 lines of Python · 3 LLM providers · 42 tests · zero frameworks.*
 
 Everyone uses Claude Code, Cursor, Devin. Almost nobody can explain what they actually do under the hood. This repo is the answer.
 
@@ -114,6 +114,7 @@ Read in order. Each is one concept. Each is runnable.
 | 07 | [errors](chapters/ch07_errors.py) | Tool errors as content. `is_error: true`. Refusals. |
 | 08 | [system_prompts](chapters/ch08_system_prompts.py) | What goes in `system` vs `messages`. Prompt caching. |
 | 08b | [observability](chapters/ch08b_observability.py) | The dollar ticker — `response.usage` × prices = no bill shock. |
+| 08c | **[prompt_caching](chapters/ch08c_prompt_caching.py)** | Caching deep dive: 1024-token threshold, breakpoints, TTL, when it backfires. 5× cost reductions, measured. |
 | 09 | [sessions](chapters/ch09_sessions.py) | JSONL on disk. Resume after ctrl-c. |
 | 10 | **[compaction](chapters/ch10_compaction.py)** | When the messages array gets too big, summarize and continue. |
 | 11 | [subagents](chapters/ch11_subagents.py) | Context isolation as a feature. The Task meta-tool. |
@@ -271,11 +272,14 @@ This is rare — most agent tutorials have empty `tests/` directories.
 | [baby-llm/baby-agent](https://github.com/baby-llm/baby-agent) | 359 | Go | MCP wire format • RAG | English-readability, Python audience |
 | **agent-101** | — | **Python** | **all of the above + tests + multi-provider** | nothing — this is the textbook |
 
-## Docs
+## Course
 
+- **[SYLLABUS.md](SYLLABUS.md)** — 7-week course structure with weekly modules, problem sets, labs, final exam questions, and adoption notes for instructors.
+- **[VIRAL.md](VIRAL.md)** — comprehensive launch playbook (the 14-day pre-launch buildup, day-0 minute-by-minute, week-1 long tail, the metrics that actually predict 100k stars).
 - [docs/ADAPTING.md](docs/ADAPTING.md) — port to OpenAI or Gemini, the foot-guns explained
 - [docs/FAQ.md](docs/FAQ.md) — three questions every reader asks
-- [docs/LAUNCH.md](docs/LAUNCH.md) — launch playbook (templates for the launch tweet, HN title, subreddits)
+- [docs/LAUNCH.md](docs/LAUNCH.md) — pre-drafted tweet/HN/Reddit copy
+- [docs/WISHLIST.md](docs/WISHLIST.md) — chapters we want next (plan mode, vision, evals, reflection)
 
 ## Acknowledgements
 
