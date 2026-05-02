@@ -236,17 +236,18 @@ pytest tests/ -v
 # 18 passed in 0.5s
 ```
 
-**36 tests, 0.5 seconds, no API key.** Mock LLMs verify the loop's control flow. The MCP tests spawn real subprocesses and exchange real JSON-RPC. The multi-provider tests verify the foot-guns (OpenAI's JSON-string args, Gemini's missing tool stop reason). The agent tests verify the Meter math, Session orphan recovery, the compaction tool_use boundary, retry backoff, prompt caching wrappers, and every individual tool. You can clone the repo, run the tests, and confirm everything works before you sign up for an API key.
+**42 tests, 0.6 seconds, no API key.** Mock LLMs verify the loop's control flow. The MCP tests spawn real subprocesses and exchange real JSON-RPC. The multi-provider tests verify the foot-guns (OpenAI's JSON-string args, Gemini's missing tool stop reason). The agent tests verify the Meter math, Session orphan recovery, the compaction tool_use boundary, retry backoff, prompt caching wrappers, and every individual tool. You can clone the repo, run the tests, and confirm everything works before you sign up for an API key.
 
 ```
-tests/test_agent.py          18 passed   # production harness
+tests/test_agent.py          18 passed   # production harness (Meter, Session, retries, caching, tools)
 tests/test_agent_loop.py      4 passed   # mock-LLM control flow
 tests/test_mcp_wire.py        4 passed   # real JSON-RPC subprocess
-tests/test_multi_provider.py  5 passed   # adapter foot-guns
+tests/test_multi_provider.py  5 passed   # adapter foot-guns (OpenAI string args, Gemini stop reason)
 tests/test_session.py         2 passed   # JSONL round-trip
 tests/test_skills.py          3 passed   # SKILL.md parsing
+tests/test_smoke.py           6 passed   # agent.py end-to-end with mocked client
                              ─────────
-                             36 passed in 0.58s
+                             42 passed in 0.63s
 ```
 
 This is rare — most agent tutorials have empty `tests/` directories.
