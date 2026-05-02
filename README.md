@@ -35,10 +35,12 @@ cd agent-101
 pip install -e .
 export ANTHROPIC_API_KEY=sk-ant-...
 
-# work through the chapters in order
+# run every chapter end-to-end (~10 min, ~$0.50 in API calls)
+bash runs/speedrun.sh
+
+# or work through individually
 python -m chapters.ch00_welcome "what's 17*23 then read README.md"
 python -m chapters.ch01_raw_call
-python -m chapters.ch02_messages_array
 # ...all the way to ch17
 
 # the climax: the Claude-Code-shaped CLI you just built
@@ -47,7 +49,7 @@ python agent.py "build me Tetris as one HTML file and open it"
 # the capstone: build a website with the agent you wrote
 python microsite/build_site.py "a Brooklyn ramen shop called Sazae"
 
-# tests pass without an API key
+# tests pass without an API key (mock LLM + real MCP subprocess)
 pytest tests/
 ```
 
