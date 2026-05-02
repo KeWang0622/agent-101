@@ -1,10 +1,11 @@
 # agent-101
 
-> **Build an agent harness from scratch — a Claude-Code-shaped CLI in 18 chapters and ~2000 lines of Python.**
+**Build a Claude-Code-shaped agent harness from scratch.**
+*18 chapters · ~2,000 lines of Python · 3 LLM providers · 18 tests · zero frameworks.*
 
-Everyone uses Claude Code, Cursor, Devin. Almost nobody can explain what they actually do under the hood.
+Everyone uses Claude Code, Cursor, Devin. Almost nobody can explain what they actually do under the hood. This repo is the answer.
 
-This repo is the answer. Eighteen short chapters that build an agent harness — session, tools, parallel calls, errors, sessions, compaction, sub-agents, skills, MCP — directly against the raw HTTP API. By the end you have a single ~600-line `agent.py` that runs in your terminal, streams output, edits files, executes bash, persists sessions to disk, and asks before it touches anything. Then you use that agent to build a working website from one prompt.
+Eighteen short chapters that build an agent harness — the agent loop, tool use, parallel calls, errors, sessions, compaction, sub-agents, skills, MCP — directly against the raw HTTP API. By the end you have a single ~600-line `agent.py` that runs in your terminal, streams output, edits files, executes bash, persists sessions to disk, and asks before it touches anything. Then you use that agent to build a working website from one prompt.
 
 No LangChain. No CrewAI. No graph DSL. Just the loop.
 
@@ -26,6 +27,16 @@ That's the whole pattern. Six lines. Every framework on Earth is wrapped around 
 - **~2,000 lines** of Python end-to-end • zero framework dependencies
 - **3 LLM providers** supported via a 100-line adapter (Anthropic, OpenAI, Gemini)
 - **18 tests** • no API key required • `pytest tests/` passes in 0.5s
+
+## First 5 minutes
+
+If you only do three things:
+
+1. Read [`chapters/ch05_the_loop.py`](chapters/ch05_the_loop.py) — 125 lines. The 6 lines that are every agent.
+2. Run `python agent.py "build me Tetris as one HTML file"` — see your loop ship something real.
+3. Read [`agent.py`](agent.py) — 505 lines. Every primitive from chapters 1–17, integrated.
+
+That's it. Everything else in this README is optional context.
 
 ## Quick start
 
