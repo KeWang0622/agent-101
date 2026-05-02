@@ -1,0 +1,23 @@
+[project]
+name = "agent-101"
+version = "0.1.0"
+description = "Build an agent harness from raw Anthropic API calls. 12 chapters, ~2000 lines, no frameworks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ke Wang" }]
+dependencies = [
+    "anthropic>=0.40.0",
+    "rich>=13.7.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v"
