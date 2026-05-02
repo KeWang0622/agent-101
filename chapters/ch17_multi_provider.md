@@ -1,0 +1,67 @@
+# Chapter 17 — Same Loop, Three Wires 🐢
+
+> **The agent loop is universal. The wire format is provider-specific. A 30-line adapter is the difference.**
+
+## 🐢 GuiGui says
+
+We've used Anthropic everywhere because its tool-use shape is the cleanest. But every primitive maps to OpenAI and Gemini. This is the chapter that proves the loop is provider-independent. After it, swap providers with a constructor argument.
+
+## The 3 foot-guns
+
+| | Anthropic | OpenAI | Gemini |
+|---|---|---|---|
+| Tool args type | parsed object | **JSON STRING** | parsed object |
+| Tool stop reason | `"tool_use"` | `"tool_calls"` | **none — scan parts** |
+| System prompt | top-level field | first message | `system_instruction` |
+
+## Show me the code
+
+```python
+@dataclass
+class AgentMessage:
+    role: str
+    text: str = ""
+    tool_calls: list = field(default_factory=list)
+    stop: str = ""        # normalized: "end" | "tool_use" | "max_tokens"
+
+class Provider(Protocol):
+    def complete(self, messages, tools, system) -> AgentMessage: ...
+
+# the loop is provider-agnostic
+def run_agent(provider, system, prompt, tools, dispatch):
+    messages = [AgentMessage("user", text=prompt)]
+    for _ in range(10):
+        resp = provider.complete(messages, tools, system)
+        messages.append(resp)
+        if resp.stop != "tool_use":
+            return resp.text
+        for tc in resp.tool_calls:
+            messages.append(AgentMessage("tool",
+                text=dispatch(tc.name, tc.args), tool_call_id=tc.id))
+```
+
+Three providers × ~30 lines each = ~100 LOC of adapter. The loop never changes.
+
+## ⚠️ Watch out for
+
+**OpenAI's JSON string args.** `tool_call.function.arguments` is a STRING. `json.loads` it before use. **Gemini's missing stop reason.** Scan `parts` for `functionCall` — `finishReason` is always `STOP`.
+
+## ✅ Summary
+
+- Loop is provider-independent.
+- Three foot-guns to know (string args, missing stop reason, system placement).
+- ~30 LOC per provider adapter.
+
+## 📝 Homework
+
+```bash
+python -m chapters.ch17_multi_provider
+```
+
+1. Run against all 3 providers. Compare wall-clock + tokens for the same task.
+2. Add a 4th provider (Mistral, DeepSeek, or Cohere). ~50 LOC.
+3. **Build:** Make `agent.py` multi-provider via a `--provider` flag.
+
+## 🚀 Next
+
+You're done with chapters! Time for [`agent.py`](../agent.py) — read it cover-to-cover. Then [`microsite/`](../microsite/) — use what you built.
