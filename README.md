@@ -128,6 +128,8 @@ Read in order. Each is one concept. Each is runnable.
 
 Bold chapters are the hero ones — read them twice.
 
+**Lecture-quality walkthroughs.** Seven chapters ship a long-form `.md` companion next to the `.py`: [ch01](chapters/ch01_raw_call.md), [ch02](chapters/ch02_messages_array.md), [ch04](chapters/ch04_one_tool.md), [ch05](chapters/ch05_the_loop.md), [ch10](chapters/ch10_compaction.md), [ch11](chapters/ch11_subagents.md), [ch13](chapters/ch13_mcp_wire.md). Each follows the same structure: planted misconception → wrong version → right version → named failure → try-this exercises → "where this shows up in `agent.py`" footer. The remaining chapters use rich docstrings; PRs adding more `.md` walkthroughs are welcome.
+
 ## Why this exists
 
 Most "build an agent" tutorials teach you a framework. You learn LangChain or LangGraph or CrewAI. You learn an abstraction for an abstraction.
