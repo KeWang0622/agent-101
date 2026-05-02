@@ -48,4 +48,4 @@ What changed in the harness:
 - 18 chapters of progressive Python files
 - agent.py — first cut of the Claude-Code-shaped CLI
 - microsite/ — capstone (build a website from one prompt)
-- 18 tests, MIT license, public on github.com/KeWang0622/agent-101
+- 18 tests, MIT license, public on github.com/KeWang0622/agent-zero-to-hero

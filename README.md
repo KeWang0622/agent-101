@@ -75,8 +75,8 @@ That's it. Everything else in this README is optional context.
 ## Quick start
 
 ```bash
-git clone https://github.com/KeWang0622/agent-101.git
-cd agent-101
+git clone https://github.com/KeWang0622/agent-zero-to-hero.git
+cd agent-zero-to-hero
 pip install -e .
 export ANTHROPIC_API_KEY=sk-ant-...
 

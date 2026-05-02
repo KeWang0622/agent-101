@@ -200,4 +200,4 @@ If you teach this course at a university, a bootcamp, or a study group:
 - A class of 25 students costs roughly $50 in API spend over 7 weeks (the speedrun is ~$0.50, the capstone is ~$5–$10).
 - We recommend pairing the course with one Karpathy "Zero to Hero" lecture per week as background reading on neural networks themselves — agent-101 is *complementary* to model-internals courses, not a replacement.
 
-If you adopt this for a course, [open an issue](https://github.com/KeWang0622/agent-101/issues) and we'll add your school to the README.
+If you adopt this for a course, [open an issue](https://github.com/KeWang0622/agent-zero-to-hero/issues) and we'll add your school to the README.

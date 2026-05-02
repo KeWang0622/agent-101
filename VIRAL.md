@@ -182,4 +182,4 @@ The shape of viral is the shape of viral. The hook changes; the cadence doesn't.
 
 ---
 
-*Last updated: 2026-05-02. If you adopt this playbook for your launch, [open an issue](https://github.com/KeWang0622/agent-101/issues) and tell me how it went — good or bad. Both data points are useful.*
+*Last updated: 2026-05-02. If you adopt this playbook for your launch, [open an issue](https://github.com/KeWang0622/agent-zero-to-hero/issues) and tell me how it went — good or bad. Both data points are useful.*

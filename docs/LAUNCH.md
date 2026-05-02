@@ -24,7 +24,7 @@ ch10 — compaction (the chapter everyone googles)
 ch13 — MCP demystified (it's just JSON-RPC over stdio)
 ch17 — the same loop, three providers (anthropic / openai / gemini)
 
-github.com/KeWang0622/agent-101
+github.com/KeWang0622/agent-zero-to-hero
 ```
 
 **Tweet 3** — why:
@@ -99,7 +99,7 @@ inspired by:
 @simonw's "Claude Skills are maybe a bigger deal than MCP" — chapter 12
 the openclaw team — the open clone that documents the patterns
 
-read the repo: github.com/KeWang0622/agent-101
+read the repo: github.com/KeWang0622/agent-zero-to-hero
 ```
 
 ## Hacker News title (NO "Show HN")
