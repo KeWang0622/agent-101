@@ -30,7 +30,7 @@ from pathlib import Path
 # the system prompt + a different output directory.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from agent import (
-    Anthropic, Session, agent_turn, load_agent_md, MODEL,
+    Anthropic, Session, Meter, agent_turn, load_agent_md, MODEL,
     console, Panel,
 )
 
@@ -68,6 +68,7 @@ def main():
 
     client = Anthropic()
     session = Session()
+    meter = Meter()
     agent_md = load_agent_md(Path.cwd())
     system = SYSTEM_OVERRIDE + ("\n\n# project context\n" + agent_md if agent_md else "")
 
@@ -76,7 +77,8 @@ def main():
         f"[dim]building: {pitch}[/dim]",
         border_style="dim"))
 
-    agent_turn(client, session, system, prompt)
+    agent_turn(client, session, system, meter, prompt)
+    console.print(f"\n[dim]final: {meter.status()}[/dim]")
 
 
 if __name__ == "__main__":

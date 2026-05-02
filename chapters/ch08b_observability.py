@@ -96,9 +96,22 @@ TOOLS = [
 ]
 
 
-SYSTEM = """\
-You are a careful arithmetic agent. Use the calculator tool for any
-arithmetic — never compute mentally. Show your work step by step.""".strip()
+# NOTE: prompt caching has a MINIMUM token threshold:
+#   sonnet/opus: 1024 tokens · haiku: 2048 tokens
+# below the threshold, anthropic silently doesn't cache (cache_r stays 0).
+# we deliberately make the system prompt long enough to cross the threshold so
+# you can SEE caching working. real agents have AGENT.md or extensive tool
+# instructions and clear this naturally; toy demos need padding.
+SYSTEM = ("You are a careful arithmetic agent. Use the calculator tool for any "
+          "arithmetic — never compute mentally. Show your work step by step.\n\n"
+          "Detailed conventions for this agent (long enough to trigger caching):\n"
+          + "\n".join(f"  rule {i}: always think step by step before computing, "
+                      f"never assume the user means modular arithmetic, prefer "
+                      f"explicit operator precedence with parentheses, return "
+                      f"the result on a new line prefixed with 'answer:', and "
+                      f"if the expression contains a syntactic ambiguity, list "
+                      f"the two interpretations and ask the user which one."
+                      for i in range(20))).strip()
 
 
 def run(prompt: str, meter: Meter, *, use_cache: bool = True):
