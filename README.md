@@ -187,6 +187,12 @@ This is rare — most agent tutorials have empty `tests/` directories.
 | [baby-llm/baby-agent](https://github.com/baby-llm/baby-agent) | 359 | Go | MCP wire format • RAG | English-readability, Python audience |
 | **agent-101** | — | **Python** | **all of the above + tests + multi-provider** | nothing — this is the textbook |
 
+## Docs
+
+- [docs/ADAPTING.md](docs/ADAPTING.md) — port to OpenAI or Gemini, the foot-guns explained
+- [docs/FAQ.md](docs/FAQ.md) — three questions every reader asks
+- [docs/LAUNCH.md](docs/LAUNCH.md) — launch playbook (templates for the launch tweet, HN title, subreddits)
+
 ## Acknowledgements
 
 - [@karpathy](https://github.com/karpathy) for the nano-* template that made educational repos a literary genre.
