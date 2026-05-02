@@ -1,9 +1,43 @@
 # agent-101
 
 **Build a Claude-Code-shaped agent harness from scratch.**
-*18 chapters · ~2,000 lines of Python · 3 LLM providers · 18 tests · zero frameworks.*
+*18 chapters · ~3,000 lines of Python · 3 LLM providers · 36 tests · zero frameworks.*
 
 Everyone uses Claude Code, Cursor, Devin. Almost nobody can explain what they actually do under the hood. This repo is the answer.
+
+```
+              ┌──────────────────┐
+              │  messages array  │   ◀── ch02 · the only memory
+              │  [user, asst,…]  │
+              └────────┬─────────┘
+                       │ send full history every turn (stateless API)
+                       ▼
+   ┌──────────┐   ┌─────────────────────┐   ┌─────────────────┐
+   │  skills  │──▶│                     │◀──│  tools          │
+   │  ch12    │   │   claude / openai   │   │ Read · Bash     │
+   │  MD on   │   │   / gemini          │   │ Edit · Glob     │
+   │  demand  │   │                     │   │  ch04–06        │
+   └──────────┘   │   (the model)       │   └─────────────────┘
+                  │                     │
+   ┌──────────┐   │                     │   ┌─────────────────┐
+   │  MCP     │──▶│                     │◀──│ session (jsonl) │
+   │ ch13–14  │   │                     │   │  ch09           │
+   │ stdio    │   └──────────┬──────────┘   │ append-only     │
+   │ JSON-RPC │              │              └─────────────────┘
+   └──────────┘              │ stop_reason
+                             ▼
+                      ┌─────────────┐
+                      │  tool_use?  │── no ──▶ return to user
+                      └──────┬──────┘
+                             │ yes
+                             ▼
+                      run_all_tools()  ─── results back to messages ──┐
+                             │                                         │
+                             └─────────────────────────────────────────┘
+                                         the loop · ch05
+```
+
+Every agent product on the market is this picture. The model is stateless; the messages array is the only memory. Tools, skills, sessions, MCP — they're how the **harness** extends the model. They're not the agent. The loop is. By ch05 you've written it in 6 lines. By ch17 you've written every box around it. By the climax (`agent.py`), you've assembled all of it into a working CLI that actually ships software.
 
 Eighteen short chapters that build an agent harness — the agent loop, tool use, parallel calls, errors, sessions, compaction, sub-agents, skills, MCP — directly against the raw HTTP API. By the end you have a single ~600-line `agent.py` that runs in your terminal, streams output, edits files, executes bash, persists sessions to disk, and asks before it touches anything. Then you use that agent to build a working website from one prompt.
 
@@ -79,6 +113,7 @@ Read in order. Each is one concept. Each is runnable.
 | 06 | [parallel_tools](chapters/ch06_parallel_tools.py) | Multiple tool_use blocks in one turn. The single-user-message rule. |
 | 07 | [errors](chapters/ch07_errors.py) | Tool errors as content. `is_error: true`. Refusals. |
 | 08 | [system_prompts](chapters/ch08_system_prompts.py) | What goes in `system` vs `messages`. Prompt caching. |
+| 08b | [observability](chapters/ch08b_observability.py) | The dollar ticker — `response.usage` × prices = no bill shock. |
 | 09 | [sessions](chapters/ch09_sessions.py) | JSONL on disk. Resume after ctrl-c. |
 | 10 | **[compaction](chapters/ch10_compaction.py)** | When the messages array gets too big, summarize and continue. |
 | 11 | [subagents](chapters/ch11_subagents.py) | Context isolation as a feature. The Task meta-tool. |
@@ -102,6 +137,28 @@ This repo teaches you what's underneath the abstraction. **The loop.** Once you'
 The pedagogy: each chapter introduces ONE concept, with one runnable demo, in one Python file. You can read any chapter in 5 minutes and run it in 10 seconds. By chapter 5 you've written the agent loop. By chapter 12 you understand skills. By chapter 14 you've written your own MCP server. By chapter 18 you have a working CLI agent that you fully understand.
 
 There are no abstractions to memorize, no providers to configure, no graph DSL. Each chapter is one Python file you can read in 5 minutes and modify in 10. By the end you will not have learned "an agent framework" — you will have built the harness yourself.
+
+## What you get in `agent.py`
+
+A production-shaped harness in one file:
+
+| Feature | Where |
+|---|---|
+| Streaming output (SSE, chunk-buffered) | `stream_one_turn` |
+| 7 tools: Read · Write · Edit · Bash · Glob · Grep · TodoWrite | `TOOLS` + `DISPATCH` |
+| Tool-call rendering (●, ⎿, colored diffs for Edit) | `render_tool_call`, `render_tool_result` |
+| JSONL session persistence + `--resume <id>` | `Session` |
+| Crash recovery (orphan-user-message detection) | `truncate_orphan_user` |
+| AGENT.md auto-discovery (walks up from cwd) | `load_agent_md` |
+| Permissions: ask · allow · deny modes | `ask_permission` |
+| Auto-compaction at 60% of context window | `compact_messages` |
+| Retries with full-jitter exponential backoff | `with_retries` |
+| Prompt caching on system + tools (5-min TTL) | `_build_system_param`, `_build_tools_param` |
+| Live cost & token meter | `Meter` |
+| 7 slash commands: `/help` `/cost` `/model` `/init` `/clear` `/compact` `/exit` | `handle_slash` |
+| Graceful Ctrl-C handling | `agent_turn` |
+
+This is not a sprint demo — it's a real harness. 800 LOC, every line readable, 18 dedicated tests in `tests/test_agent.py`.
 
 ## What the agent looks like
 
@@ -179,7 +236,18 @@ pytest tests/ -v
 # 18 passed in 0.5s
 ```
 
-Every chapter has a test. Mock LLMs verify control flow. The MCP tests spawn a real subprocess and exchange real JSON-RPC. The multi-provider tests verify the foot-guns (OpenAI's JSON-string args, Gemini's missing tool stop reason). You can clone the repo, run the tests, and confirm everything works before you sign up for an API key.
+**36 tests, 0.5 seconds, no API key.** Mock LLMs verify the loop's control flow. The MCP tests spawn real subprocesses and exchange real JSON-RPC. The multi-provider tests verify the foot-guns (OpenAI's JSON-string args, Gemini's missing tool stop reason). The agent tests verify the Meter math, Session orphan recovery, the compaction tool_use boundary, retry backoff, prompt caching wrappers, and every individual tool. You can clone the repo, run the tests, and confirm everything works before you sign up for an API key.
+
+```
+tests/test_agent.py          18 passed   # production harness
+tests/test_agent_loop.py      4 passed   # mock-LLM control flow
+tests/test_mcp_wire.py        4 passed   # real JSON-RPC subprocess
+tests/test_multi_provider.py  5 passed   # adapter foot-guns
+tests/test_session.py         2 passed   # JSONL round-trip
+tests/test_skills.py          3 passed   # SKILL.md parsing
+                             ─────────
+                             36 passed in 0.58s
+```
 
 This is rare — most agent tutorials have empty `tests/` directories.
 
