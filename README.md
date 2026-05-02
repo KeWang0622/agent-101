@@ -140,6 +140,24 @@ Read in order. Each is one concept. Each is runnable.
 
 Bold chapters are the hero ones — read them twice.
 
+## Quotable mottos — one per chapter
+
+Stick these on a wall, tweet them, put them above your monitor. Each is the one-line idea its chapter is built around.
+
+| Chapter | Motto |
+|---|---|
+| 02 messages_array | *"The messages array IS the memory. There is no other memory."* |
+| 04 one_tool | *"The model can't run code. You can. A tool is the contract between them."* |
+| **05 the_loop** | *"The thing the model can't do is run code. The thing you can't do is think. An agent loop is just `while True` of one talking to the other."* |
+| 06 parallel_tools | *"Claude can ask for three things at once. Run all three. Send all three back. In one user message. Or you'll teach it to stop being parallel."* |
+| 07 errors | *"A tool that crashes is a bug. A tool that returns its error as a string is graceful degradation."* |
+| 08 system_prompts | *"The system prompt is what the model is. Messages are what it just did. Tools are what it can do. Don't mix them up."* |
+| **10 compaction** | *"When your messages array gets too big, claude gets dumber AND more expensive. Compaction is one LLM call that summarizes old turns and lets you keep going."* |
+| 11 subagents | *"A subagent is an agent loop with a fresh messages array, called as a tool. Its conversation is invisible to the parent. Only its final answer comes back."* |
+| 12 skills | *"A skill is a markdown file with YAML frontmatter. Claude reads the file only when it needs it. Don't put everything in the system prompt."* |
+| **13 mcp_wire** | *"MCP is 'USB-C for AI' if you're selling it. From the wire, it's three things: a child process, line-delimited JSON-RPC 2.0, three method calls."* |
+| 17 multi_provider | *"The agent loop is universal. The wire format is provider-specific. A 30-line adapter is the difference."* |
+
 ## Demo gallery — what to type when you're done
 
 Once you finish chapter 17 and have your `agent.py`, here are the prompts that show off what you built:
@@ -322,7 +340,20 @@ This repo is meant to be ported. Open a PR and add yours here:
 | Language | Author | Repo |
 |---|---|---|
 | Python (canonical) | [@KeWang0622](https://github.com/KeWang0622) | this repo |
-| _your port?_ | _you?_ | _open a PR_ |
+| _Rust?_ | _you?_ | _open a PR_ |
+| _Go?_ | _you?_ | _open a PR_ |
+| _TypeScript?_ | _you?_ | _open a PR_ |
+| _Zig?_ | _you?_ | _open a PR_ |
+
+`llm.c` got `llm.cpp`, `llm.zig`, `llm.rs`, `llm.metal` because Karpathy *invited* ports in the README. We do the same. Find a stuck place in your language's tooling, port the chapter that fixes it, send a PR.
+
+## Community
+
+| | |
+|---|---|
+| **Used by** | _Adopted by a school, bootcamp, or company? Open an issue and we'll add you here._ |
+| **Built with** | _Use `agent.py` to ship something cool? Open an issue with a screenshot and we'll feature it._ |
+| **Featured in** | _Got covered in a newsletter, video, podcast? Open an issue and we'll cite it._ |
 
 ## License
 
