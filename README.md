@@ -1,47 +1,30 @@
-# agent-101
+<p align="center">
+  <img src="assets/hero.png" alt="agent-zero-to-hero" width="100%">
+</p>
 
-**Build a Claude-Code-shaped agent harness from scratch.**
-*7-week course · 19 chapters · ~4,500 lines of Python · 3 LLM providers · 42 tests · zero frameworks.*
+<p align="center">
+  <a href="https://github.com/KeWang0622/agent-zero-to-hero/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-89b4fa?style=flat-square" alt="MIT"></a>
+  <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/python-3.10+-89b4fa?style=flat-square&logo=python&logoColor=white" alt="python"></a>
+  <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/tests-42_passing-a6e3a1?style=flat-square" alt="42 tests"></a>
+  <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/api_keys_required-0-a6e3a1?style=flat-square" alt="0 API keys"></a>
+  <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/frameworks-none-f38ba8?style=flat-square" alt="no frameworks"></a>
+  <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/providers-anthropic_·_openai_·_gemini-cba6f7?style=flat-square" alt="3 providers"></a>
+</p>
+
+> ## Build a Claude-Code-shaped agent harness from scratch.
+> *7-week course · 19 chapters · ~4,500 lines of Python · 3 LLM providers · 42 tests · zero frameworks.*
 
 Everyone uses Claude Code, Cursor, Devin. Almost nobody can explain what they actually do under the hood. This repo is the answer.
 
-```
-              ┌──────────────────┐
-              │  messages array  │   ◀── ch02 · the only memory
-              │  [user, asst,…]  │
-              └────────┬─────────┘
-                       │ send full history every turn (stateless API)
-                       ▼
-   ┌──────────┐   ┌─────────────────────┐   ┌─────────────────┐
-   │  skills  │──▶│                     │◀──│  tools          │
-   │  ch12    │   │   claude / openai   │   │ Read · Bash     │
-   │  MD on   │   │   / gemini          │   │ Edit · Glob     │
-   │  demand  │   │                     │   │  ch04–06        │
-   └──────────┘   │   (the model)       │   └─────────────────┘
-                  │                     │
-   ┌──────────┐   │                     │   ┌─────────────────┐
-   │  MCP     │──▶│                     │◀──│ session (jsonl) │
-   │ ch13–14  │   │                     │   │  ch09           │
-   │ stdio    │   └──────────┬──────────┘   │ append-only     │
-   │ JSON-RPC │              │              └─────────────────┘
-   └──────────┘              │ stop_reason
-                             ▼
-                      ┌─────────────┐
-                      │  tool_use?  │── no ──▶ return to user
-                      └──────┬──────┘
-                             │ yes
-                             ▼
-                      run_all_tools()  ─── results back to messages ──┐
-                             │                                         │
-                             └─────────────────────────────────────────┘
-                                         the loop · ch05
-```
+<p align="center">
+  <img src="assets/loop.png" alt="The agent loop architecture" width="80%">
+</p>
 
 Every agent product on the market is this picture. The model is stateless; the messages array is the only memory. Tools, skills, sessions, MCP — they're how the **harness** extends the model. They're not the agent. The loop is. By ch05 you've written it in 6 lines. By ch17 you've written every box around it. By the climax (`agent.py`), you've assembled all of it into a working CLI that actually ships software.
 
-Eighteen short chapters that build an agent harness — the agent loop, tool use, parallel calls, errors, sessions, compaction, sub-agents, skills, MCP — directly against the raw HTTP API. By the end you have a single ~600-line `agent.py` that runs in your terminal, streams output, edits files, executes bash, persists sessions to disk, and asks before it touches anything. Then you use that agent to build a working website from one prompt.
+Eighteen short chapters that build an agent harness — the agent loop, tool use, parallel calls, errors, sessions, compaction, sub-agents, skills, MCP — directly against the raw HTTP API. By the end you have a single ~840-line `agent.py` that runs in your terminal, streams output, edits files, executes bash, persists sessions to disk, and asks before it touches anything. Then you use that agent to build a working website from one prompt.
 
-No LangChain. No CrewAI. No graph DSL. Just the loop.
+**No LangChain. No CrewAI. No graph DSL. Just the loop.**
 
 ```python
 # the entire agent loop, no abstractions
@@ -53,14 +36,16 @@ while True:
     msgs.append({"role": "user", "content": run_all_tools(r.content)})
 ```
 
-That's the whole pattern. Six lines. Every framework on Earth is wrapped around them. By chapter 5 you've written this yourself; by chapter 18 you've added 600 lines of UX, sessions, skills, and MCP around it; and you can read Claude Code's source and recognize every primitive by name.
+That's the whole pattern. Six lines. Every framework on Earth is wrapped around them. By chapter 5 you've written this yourself; by chapter 18 you've added ~840 lines of UX, sessions, skills, and MCP around it; and you can read Claude Code's source and recognize every primitive by name.
 
 ## The numbers
 
-- **18 chapters** • each one a single Python file • runnable in <30 seconds
-- **~2,000 lines** of Python end-to-end • zero framework dependencies
+- **19 chapters** • each one a single Python file • runnable in <30 seconds
+- **~4,500 lines** of Python end-to-end • zero framework dependencies
 - **3 LLM providers** supported via a 100-line adapter (Anthropic, OpenAI, Gemini)
-- **18 tests** • no API key required • `pytest tests/` passes in 0.5s
+- **42 tests** • no API key required • `pytest tests/` passes in 0.6s
+- **5× cost reduction** with prompt caching, [measured live](#caching-the-numbers)
+- **$0.12** to build a working landing page (real run, see [microsite](microsite/))
 
 ## First 5 minutes
 
@@ -98,6 +83,32 @@ python microsite/build_site.py "a Brooklyn ramen shop called Sazae"
 pytest tests/
 ```
 
+## The chapter ladder
+
+<p align="center">
+  <img src="assets/ladder.png" alt="Chapter LOC ladder" width="100%">
+</p>
+
+Each bar is one chapter's lines of code. The yellow line is cumulative. Each chapter teaches one concept and adds 100–250 lines of code; the climax `agent.py` is 840 lines that integrate every primitive from the chapters before it.
+
+## Caching, the numbers
+
+Prompt caching is the single biggest cost lever for agents. We don't just talk about it — we measure it live. From `ch08c_prompt_caching.py`:
+
+<p align="center">
+  <img src="assets/cache-chart.png" alt="Prompt caching cost reduction" width="100%">
+</p>
+
+5× cost reduction by run 5. Same model. Same prompt. The only thing that changed is whether we placed `cache_control` on the system prompt prefix. The chapter teaches the foot-guns too — the 1024-token threshold, the TTL trade-off, when caching backfires (changing prompts, request-IDs).
+
+## How much does it cost to build something?
+
+<p align="center">
+  <img src="assets/cost-chart.png" alt="Cost comparison agent.py vs naive" width="100%">
+</p>
+
+agent.py with auto-compaction + prompt caching is 3–5× cheaper than the naive loop on real tasks. The right column ("write a deep research report") is the difference between an agent you can ship to a thousand users and one you can't afford to run. **This is what the chapters on compaction and caching pay for.**
+
 ## The chapters
 
 Read in order. Each is one concept. Each is runnable.
@@ -128,6 +139,22 @@ Read in order. Each is one concept. Each is runnable.
 | ★ | **[microsite](microsite/)** | The capstone. Build a working website from one prompt. |
 
 Bold chapters are the hero ones — read them twice.
+
+## Demo gallery — what to type when you're done
+
+Once you finish chapter 17 and have your `agent.py`, here are the prompts that show off what you built:
+
+| Prompt | What you'll see | Cost (real) |
+|---|---|---|
+| `python agent.py "build me Tetris in one HTML file and open it"` | A working Tetris game, ~250 lines of JS, opens in your browser | ~$0.18 |
+| `python agent.py "find the longest python file in chapters/ and explain what it does"` | Glob → sort → read → 200-word explanation | ~$0.04 |
+| `python microsite/build_site.py "a Brooklyn ramen shop called Sazae"` | A working 5-section landing page, Tailwind, real Unsplash photos | ~$0.12 |
+| `python agent.py "write a unit test for tool_edit, with at least 3 cases"` | A pytest file, runs green | ~$0.05 |
+| `python agent.py "summarize this repo in one paragraph"` | Self-aware paragraph, $0.02 if AGENT.md is cached | ~$0.02 |
+| `python agent.py "find one bug in agent.py and propose a fix"` | Reads the file, proposes a real diff (some hits!) | ~$0.08 |
+| `python agent.py "fix this typo: 'agetn' in the README"` | Two-tool round-trip: Grep + Edit + verify | ~$0.03 |
+
+Add yours via PR. The bar: ~$0.30, deterministic-ish, screenshot-able.
 
 **Lecture-quality walkthroughs.** Seven chapters ship a long-form `.md` companion next to the `.py`: [ch01](chapters/ch01_raw_call.md), [ch02](chapters/ch02_messages_array.md), [ch04](chapters/ch04_one_tool.md), [ch05](chapters/ch05_the_loop.md), [ch10](chapters/ch10_compaction.md), [ch11](chapters/ch11_subagents.md), [ch13](chapters/ch13_mcp_wire.md). Each follows the same structure: planted misconception → wrong version → right version → named failure → try-this exercises → "where this shows up in `agent.py`" footer. The remaining chapters use rich docstrings; PRs adding more `.md` walkthroughs are welcome.
 
