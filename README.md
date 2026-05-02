@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hero.png" alt="agent-zero-to-hero" width="100%">
+  <img src="assets/hero-course.png" alt="agent-zero-to-hero · the course" width="100%">
 </p>
 
 <p align="center">
@@ -9,16 +9,38 @@
   <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/api_keys_required-0-a6e3a1?style=flat-square" alt="0 API keys"></a>
   <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/frameworks-none-f38ba8?style=flat-square" alt="no frameworks"></a>
   <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/providers-anthropic_·_openai_·_gemini-cba6f7?style=flat-square" alt="3 providers"></a>
+  <a href="https://github.com/KeWang0622/agent-zero-to-hero"><img src="https://img.shields.io/badge/mascot-GuiGui_🐢-a6e3a1?style=flat-square" alt="GuiGui"></a>
 </p>
 
 > ## Build a Claude-Code-shaped agent harness from scratch.
 > *7-week course · 19 chapters · ~4,500 lines of Python · 3 LLM providers · 42 tests · zero frameworks.*
 
+<table>
+<tr>
+<td width="35%" valign="middle"><img src="assets/mascot-wave.gif" alt="GuiGui waving" width="100%"></td>
+<td valign="middle">
+
+### Hi! I'm GuiGui 🐢
+
+I'm your TA for this course. We're going to build a Claude-Code-shaped agent harness together — from one HTTP call all the way to a working CLI that ships real software.
+
+**You and I will write 4,500 lines of Python, 19 numbered chapters, no frameworks.** By the end you'll be able to read the source of Cursor, Claude Code, or Devin and recognize every primitive by name.
+
+Ready? Pick `chapters/ch00_welcome.py` and let's go.
+
+</td>
+</tr>
+</table>
+
 Everyone uses Claude Code, Cursor, Devin. Almost nobody can explain what they actually do under the hood. This repo is the answer.
 
+## The agent loop, in motion
+
 <p align="center">
-  <img src="assets/loop.png" alt="The agent loop architecture" width="80%">
+  <video src="https://github.com/KeWang0622/agent-zero-to-hero/raw/main/assets/loop-anim.mp4" controls width="80%" autoplay loop muted></video>
 </p>
+
+> *(If the video doesn't render, click [here](assets/loop-anim.mp4) — GitHub renders MP4 inline on the web. Or see the [static diagram](assets/loop.png).)*
 
 Every agent product on the market is this picture. The model is stateless; the messages array is the only memory. Tools, skills, sessions, MCP — they're how the **harness** extends the model. They're not the agent. The loop is. By ch05 you've written it in 6 lines. By ch17 you've written every box around it. By the climax (`agent.py`), you've assembled all of it into a working CLI that actually ships software.
 
@@ -82,6 +104,24 @@ python microsite/build_site.py "a Brooklyn ramen shop called Sazae"
 # tests pass without an API key (mock LLM + real MCP subprocess)
 pytest tests/
 ```
+
+## The 7-week journey
+
+<p align="center">
+  <img src="assets/journey.png" alt="The 7-week journey" width="100%">
+</p>
+
+| Week | What | Thumbnail |
+|---|---|---|
+| **1** | Foundations: from one HTTP call to the agent loop | <img src="assets/week1.png" width="120"> |
+| **2** | Tool engineering: parallel calls, errors, system prompts | <img src="assets/week2.png" width="120"> |
+| **3** | Cost & observability: caching, the dollar ticker, compaction | <img src="assets/week3.png" width="120"> |
+| **4** | Persistence & scale: sessions, subagents | <img src="assets/week4.png" width="120"> |
+| **5** | Skills & MCP: the extension surfaces | <img src="assets/week5.png" width="120"> |
+| **6** | Engineering polish: streaming, multi-provider | <img src="assets/week6.png" width="120"> |
+| **7** | Capstone: the climax + the website | <img src="assets/week7.png" width="120"> |
+
+Full schedule with problem sets, labs, reading, and final exam questions in [SYLLABUS.md](SYLLABUS.md).
 
 ## The chapter ladder
 

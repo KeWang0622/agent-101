@@ -30,6 +30,8 @@ Total study time: **~25 hours over 7 weeks**, plus the capstone.
 
 ---
 
+<img align="right" src="assets/week1.png" width="180" alt="Week 1">
+
 ## Week 1 — Foundations: from one HTTP call to the agent loop
 
 **Lectures**: ch00, ch01, ch02, ch03, ch04, ch05
@@ -53,6 +55,8 @@ The conceptual core. By the end of week 1 a student has written the canonical 6-
 
 ---
 
+<img align="right" src="assets/week2.png" width="180" alt="Week 2">
+
 ## Week 2 — Tool engineering: parallel calls, errors, system prompts
 
 **Lectures**: ch06, ch07, ch08
@@ -69,6 +73,8 @@ When real tools meet real models, things break. This week is about robustness.
 **Lab**: Build a tool registry with `@tool` decorator that auto-generates the JSON schema from a Python function's signature + docstring. ~30 LOC.
 
 ---
+
+<img align="right" src="assets/week3.png" width="180" alt="Week 3">
 
 ## Week 3 — Cost & observability: caching, the dollar ticker, compaction
 
@@ -90,6 +96,8 @@ The week most "build an agent" courses skip. Cost is the rate-limiter on real ad
 
 ---
 
+<img align="right" src="assets/week4.png" width="180" alt="Week 4">
+
 ## Week 4 — Persistence & scale: sessions, subagents
 
 **Lectures**: ch09, ch11
@@ -109,6 +117,8 @@ State that survives crashes. Context that doesn't blow up.
 **Lab**: Build a "deep research" agent that delegates each search query to a fresh subagent and stitches the answers together. ~100 LOC.
 
 ---
+
+<img align="right" src="assets/week5.png" width="180" alt="Week 5">
 
 ## Week 5 — Skills & MCP: the extension surfaces
 
@@ -130,6 +140,8 @@ The two ways agent harnesses extend without bloating their core. By end of week 
 
 ---
 
+<img align="right" src="assets/week6.png" width="180" alt="Week 6">
+
 ## Week 6 — Engineering polish: streaming, multi-provider
 
 **Lectures**: ch15, ch16, ch17
@@ -146,6 +158,8 @@ The wire-format chapters. Streaming text + accumulating tool_use partial JSON + 
 **Lab**: Add streaming markdown rendering to `agent.py` that re-renders the buffer on every text_delta (currently it just prints raw deltas).
 
 ---
+
+<img align="right" src="assets/week7.png" width="180" alt="Week 7">
 
 ## Week 7 — Capstone: the climax + the website
 
