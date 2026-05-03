@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>agent-101</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">agent<span class="accent">-101</span></div>
+    <p class="tagline">A Claude-Code-shaped agent harness, built chapter by chapter.</p>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">agent.py</span>
+        </div>
+        <pre class="terminal-body" id="typewriter"></pre>
+      </div>
+    </section>
+
+    <section class="what">
+      <h2>What am I?</h2>
+      <p>
+        I am <strong>agent-101</strong> — an educational reference implementation of an
+        AI coding agent. I wrap the <a href="https://www.anthropic.com/" target="_blank">Anthropic Messages API</a>
+        in a tool-use loop, exposing every primitive in plain, readable Python.
+      </p>
+      <p>
+        Think of me as the engine behind
+        <em>Claude Code</em>, stripped down to ~840 lines so you can read every
+        decision on a single flight.
+      </p>
+    </section>
+
+    <section class="features">
+      <h2>What I can do</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🔧</div>
+          <h3>7 Built-in Tools</h3>
+          <p>Read · Write · Edit · Bash · Glob · Grep · TodoWrite</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔄</div>
+          <h3>Tool-Use Loop</h3>
+          <p>Claude requests tools; I run them; results feed back — until done.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Streaming Output</h3>
+          <p>SSE chunk-buffered streaming so you see tokens as they arrive.</p>
+        </div>
+        <div class="card">
+          <div class="icon">💾</div>
+          <h3>Session Persistence</h3>
+          <p>JSONL sessions, resumable with <code>--resume &lt;id&gt;</code>.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🗜️</div>
+          <h3>Context Compaction</h3>
+          <p>Auto-compacts at 60 % of the model window to keep long sessions alive.</p>
+        </div>
+        <div class="card">
+          <div class="icon">💰</div>
+          <h3>Prompt Caching</h3>
+          <p>5-minute TTL cache on system + tools — ~10× cost reduction.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔌</div>
+          <h3>MCP Support</h3>
+          <p>Speaks the Model Context Protocol over stdio (chapters 13 & 14).</p>
+        </div>
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h3>Permission Modes</h3>
+          <p><code>ask</code> · <code>allow</code> · <code>deny</code> — per tool call or globally.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapters">
+      <h2>18 Chapters — one concept each</h2>
+      <ol class="chapter-list">
+        <li><span class="ch">ch00</span> A working agent in 30 seconds</li>
+        <li><span class="ch">ch01</span> Raw HTTP — one API call, no SDK</li>
+        <li><span class="ch">ch02</span> The messages array</li>
+        <li><span class="ch">ch03</span> Stop reasons</li>
+        <li><span class="ch">ch04</span> One tool</li>
+        <li><span class="ch">ch05</span> The loop</li>
+        <li><span class="ch">ch06</span> Parallel tools</li>
+        <li><span class="ch">ch07</span> Errors & retries</li>
+        <li><span class="ch">ch08</span> System prompts</li>
+        <li><span class="ch">ch08b</span> Observability</li>
+        <li><span class="ch">ch08c</span> Prompt caching</li>
+        <li><span class="ch">ch09</span> Sessions</li>
+        <li><span class="ch">ch10</span> Compaction</li>
+        <li><span class="ch">ch11</span> Subagents</li>
+        <li><span class="ch">ch12</span> Skills</li>
+        <li><span class="ch">ch13</span> MCP wire protocol</li>
+        <li><span class="ch">ch14</span> MCP agent</li>
+        <li><span class="ch">ch15</span> Streaming text</li>
+        <li><span class="ch">ch16</span> Streaming tools</li>
+        <li><span class="ch">ch17</span> Multi-provider</li>
+      </ol>
+    </section>
+
+    <section class="quickstart">
+      <h2>Quick start</h2>
+      <pre><code>export ANTHROPIC_API_KEY=sk-ant-...
+python agent.py "build me a tetris game in one html file"
+python agent.py --resume &lt;session-id&gt;
+python agent.py   # interactive REPL</code></pre>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>agent-101 · educational reference · built on <a href="https://www.anthropic.com/" target="_blank">Anthropic Claude</a></p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

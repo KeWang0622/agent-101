@@ -1,0 +1,211 @@
+/* ── reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #0d1117;
+  --surface:  #161b22;
+  --border:   #30363d;
+  --text:     #e6edf3;
+  --muted:    #8b949e;
+  --accent:   #f78166;
+  --accent2:  #58a6ff;
+  --green:    #3fb950;
+  --yellow:   #d29922;
+  --radius:   8px;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: var(--accent2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── header ── */
+header {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -2px;
+  color: var(--text);
+}
+
+.logo .accent { color: var(--accent); }
+
+.tagline {
+  margin-top: .75rem;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* ── main layout ── */
+main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+section { margin-top: 4rem; }
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+  padding-left: .75rem;
+}
+
+/* ── terminal hero ── */
+.terminal {
+  background: #010409;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: .85rem;
+}
+
+.terminal-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: .5rem .75rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot.red    { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green  { background: #27c93f; }
+
+.terminal-title {
+  margin-left: .5rem;
+  font-size: .75rem;
+  color: var(--muted);
+}
+
+.terminal-body {
+  padding: 1.25rem 1.5rem;
+  min-height: 160px;
+  color: var(--green);
+  white-space: pre;
+  line-height: 1.7;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  background: var(--green);
+  animation: blink .8s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ── what section ── */
+.what p { color: var(--muted); margin-bottom: .75rem; }
+.what strong { color: var(--text); }
+.what em { color: var(--accent2); font-style: normal; }
+
+/* ── feature grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  transition: border-color .2s, transform .2s;
+}
+
+.card:hover {
+  border-color: var(--accent2);
+  transform: translateY(-2px);
+}
+
+.card .icon { font-size: 1.5rem; margin-bottom: .5rem; }
+.card h3 { font-size: .95rem; margin-bottom: .4rem; }
+.card p { font-size: .8rem; color: var(--muted); }
+.card code {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  background: var(--bg);
+  padding: .1em .3em;
+  border-radius: 3px;
+  color: var(--accent);
+}
+
+/* ── chapters ── */
+.chapter-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: .5rem;
+  counter-reset: ch;
+}
+
+.chapter-list li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .6rem 1rem;
+  font-size: .88rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  transition: border-color .2s;
+}
+
+.chapter-list li:hover { border-color: var(--accent2); color: var(--text); }
+
+.ch {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--accent);
+  background: var(--bg);
+  padding: .15em .4em;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* ── quickstart ── */
+.quickstart pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  line-height: 1.8;
+  color: var(--green);
+}
+
+/* ── footer ── */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .85rem;
+}
