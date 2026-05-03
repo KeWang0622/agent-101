@@ -56,6 +56,13 @@ python -m chapters.ch14_mcp_agent "what is (17 * 23) + 1234?"
 2. Connect TWO MCP servers (calculator + a custom weather server you write).
 3. Add MCP support to `agent.py` (~50 LOC). Send a PR.
 
+## 📚 References
+
+- [modelcontextprotocol/python-sdk](https://github.com/modelcontextprotocol/python-sdk) — what we're NOT using; FastMCP hides the wire
+- [MCP — tool integration patterns](https://modelcontextprotocol.io/docs/concepts/tools) — official guide
+- [LangChain — MCP integrations](https://python.langchain.com/docs/integrations/tools/mcp/) — alternative client implementation worth comparing
+- [`mcp__` namespace convention in Claude Code](https://docs.anthropic.com/en/docs/claude-code/mcp) — where the prefix originated
+
 ## 🚀 Next
 
 [Chapter 15 — Streaming text](ch15_streaming_text.md): make the tokens appear one at a time.

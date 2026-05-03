@@ -67,6 +67,13 @@ python -m chapters.ch11_subagents
 2. Add a SECOND subagent type (a "research" subagent with web search).
 3. Add a `Task` tool to `agent.py`. ~30 LOC. Make `agent.py` capable of delegated reasoning.
 
+## 📚 References
+
+- [Anthropic — How we built Claude Code's subagent system](https://www.anthropic.com/engineering/multi-agent-research-system) — production patterns
+- [Anthropic — Building Effective Agents (orchestrator-workers section)](https://www.anthropic.com/research/building-effective-agents) — the canonical pattern
+- [shareAI-lab/learn-claude-code — `s04`](https://github.com/shareAI-lab/learn-claude-code) — fresh-`messages[]` subagent reference
+- [Hong et al. — MetaGPT (2023)](https://arxiv.org/abs/2308.00352) — multi-agent framework paper
+
 ## 🚀 Next
 
 [Chapter 12 — Skills](ch12_skills.md): instructions loaded on demand, not eagerly.

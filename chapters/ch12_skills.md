@@ -61,6 +61,13 @@ python -m chapters.ch12_skills
 2. Compute: a 5-skill agent's system prompt cost (catalog only) vs eager-loaded (all bodies). 10×? 50×?
 3. Add `read_skill` to `agent.py`. Make it skill-aware.
 
+## 📚 References
+
+- [Anthropic — Equipping agents with Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) — the official launch post
+- [Simon Willison — Claude Skills are maybe a bigger deal than MCP](https://simonwillison.net/2024/Oct/16/claude-skills/) — why this chapter exists
+- [Anthropic — Claude Code skills directory](https://docs.anthropic.com/en/docs/claude-code/skills) — the canonical SKILL.md format
+- [openclaw — `skills/` directory](https://github.com/openclaw/openclaw/tree/main/skills) — production examples
+
 ## 🚀 Next
 
 [Chapter 13 — MCP demystified](ch13_mcp_wire.md): tools across process boundaries.

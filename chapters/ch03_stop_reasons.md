@@ -6,17 +6,19 @@
 
 Most beginners write `while stop_reason == "tool_use": ...` and get bitten when `max_tokens` truncates a reply. The loop quietly exits with corrupt state. Don't be that person — handle every value.
 
+> **Heads up:** one of the seven values is `tool_use`. We haven't introduced tools yet (that's [ch04](ch04_one_tool.md)). For this chapter, just know that `tool_use` is one of the values — we'll cover what it *means* in the next chapter.
+
 ## The seven stop_reasons
 
 | Value | Meaning | Loop action |
 |---|---|---|
 | `end_turn` | Finished naturally | exit, return text |
-| `tool_use` | Reply ended with tool_use | run tools, continue |
+| `tool_use` | *Covered in [ch04](ch04_one_tool.md)* | run tools, continue |
 | `max_tokens` | YOUR `max_tokens` cap was hit (truncated) | hard fail, raise |
 | `stop_sequence` | Hit a `stop_sequences` string | exit |
 | `refusal` | Claude refused | surface to user |
 | `pause_turn` | Server-side tool needs more time | continue with no input |
-| `model_context_window_exceeded` | The MODEL's context window filled up (added with Sonnet 4.5) | compact + retry |
+| `model_context_window_exceeded` | The MODEL's context window filled up (Sonnet 4.5+) | compact + retry |
 
 ## Show me the code
 
@@ -31,7 +33,7 @@ while True:
     if r.stop_reason == "model_context_window_exceeded":
         raise ContextOverflow(r)                       # compact, then retry
     if r.stop_reason == "pause_turn": continue
-    if r.stop_reason == "tool_use":
+    if r.stop_reason == "tool_use":                    # ch04 covers what this means
         msgs.append({"role": "user", "content": run_tools(r.content)})
         continue
     raise UnknownStopReason(r.stop_reason)             # forward-compat
@@ -41,9 +43,9 @@ Exhaustive. Loud on every unexpected value. **No silent failures.**
 
 ## ⚠️ Watch out for
 
-**The mid-JSON truncation.** When `max_tokens` cuts the reply during a streamed `tool_use`, the buffered `partial_json` is invalid. Always check `stop_reason` BEFORE parsing.
+**The mid-JSON truncation.** When `max_tokens` cuts the reply during a streamed tool call, the buffered partial JSON is invalid. Always check `stop_reason` BEFORE parsing.
 
-**`max_tokens` ≠ `model_context_window_exceeded`.** The first means *YOU* set the output cap too low — retry with a higher cap. The second means the input + output blew past the model's window — retry won't help; you need to compact (ch10) or use a larger model.
+**`max_tokens` ≠ `model_context_window_exceeded`.** The first means *YOU* set the output cap too low — retry with a higher cap. The second means input + output blew past the model's window — retry won't help; you need to compact ([ch10](ch10_compaction.md)) or use a larger model.
 
 ## ✅ Summary
 
@@ -62,6 +64,12 @@ python -m chapters.ch03_stop_reasons
 3. Find a prompt that triggers `refusal` (try ethically grey-zone tasks).
 4. **Bonus:** trigger `model_context_window_exceeded` by stuffing 250K tokens into messages.
 
+## 📚 References
+
+- [Anthropic — Handling stop reasons](https://docs.anthropic.com/en/api/handling-stop-reasons) — canonical list with examples
+- [Anthropic — Messages API reference](https://docs.anthropic.com/en/api/messages) — full response shape
+- [Anthropic — `model_context_window_exceeded` announcement](https://docs.anthropic.com/en/release-notes/api) — added with Sonnet 4.5
+
 ## 🚀 Next
 
-[Chapter 04 — Your first tool](ch04_one_tool.md): now the loop has a reason to exist.
+[Chapter 04 — Your first tool](ch04_one_tool.md): now the loop has a reason to exist, and `tool_use` will make sense.

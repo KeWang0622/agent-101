@@ -47,6 +47,12 @@ python -m chapters.ch00_welcome "find any TODO in this repo"
 
 After all three: **what surprised you?** Open an issue if anything wasn't obvious.
 
+## 📚 References
+
+- [Anthropic — Building Effective Agents](https://www.anthropic.com/research/building-effective-agents) — start here for the conceptual frame
+- [Karpathy — Neural Networks: Zero to Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ) — the literary lineage of this course
+- [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT) and [karpathy/nanochat](https://github.com/karpathy/nanochat) — the reference style
+
 ## 🚀 Next
 
 [Chapter 01 — Raw API call](ch01_raw_call.md): strip out the SDK and see the bytes.

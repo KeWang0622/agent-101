@@ -52,6 +52,12 @@ python -m chapters.ch08_system_prompts
 2. Wrap `system` with `cache_control`. Run twice. Check `cache_read_input_tokens`.
 3. Find one place in `agent.py` where changing the system prompt would alter behavior.
 
+## 📚 References
+
+- [Anthropic — System prompts](https://docs.anthropic.com/en/docs/build-with-claude/system-prompts) — official guide
+- [Anthropic — Prompt engineering overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) — the canonical prompt techniques
+- [Anthropic — `developer` role for OpenAI compatibility](https://platform.openai.com/docs/guides/text-generation) — note: OpenAI deprecated `system` in favor of `developer` (2026)
+
 ## 🚀 Next
 
 [Chapter 08b — The dollar ticker](ch08b_observability.md): what does each turn actually cost?

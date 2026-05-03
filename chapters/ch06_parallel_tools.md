@@ -46,6 +46,12 @@ python -m chapters.ch06_parallel_tools
 2. Modify the chapter to deliberately split results across messages. Run 5 times. Count how often claude emits parallel calls. Compare.
 3. **Build a real demo:** weather agent that fetches 3 cities at once.
 
+## 📚 References
+
+- [Anthropic — Parallel tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/parallel-tool-use) — the official protocol
+- [OpenAI — Parallel function calling](https://platform.openai.com/docs/guides/function-calling#parallel-function-calling) — same idea, different shape
+- [Python — `concurrent.futures` docs](https://docs.python.org/3/library/concurrent.futures.html) — the threadpool we use
+
 ## 🚀 Next
 
 [Chapter 07 — Errors](ch07_errors.md): tools fail. The loop must not.

@@ -56,6 +56,13 @@ python -m chapters.ch01_raw_call "explain agents in one sentence"
 2. Compute the cost: `input * $3/1M + output * $15/1M`. That's what one call costs you.
 3. Add `"system": "Reply only in haiku."` to the request body. Re-run.
 
+## 📚 References
+
+- [Anthropic — Messages API reference](https://docs.anthropic.com/en/api/messages) — every field, every shape
+- [Anthropic — API versioning](https://docs.anthropic.com/en/api/versioning) — why we send `anthropic-version: 2023-06-01`
+- [anthropics/anthropic-sdk-python](https://github.com/anthropics/anthropic-sdk-python) — what we're NOT using in this chapter
+- [Hugging Face — Inference Providers](https://huggingface.co/docs/inference-providers) — same wire format works against many backends
+
 ## 🚀 Next
 
 [Chapter 02 — Messages array](ch02_messages_array.md): the API has no memory. Why does it remember the last turn?

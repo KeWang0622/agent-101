@@ -55,6 +55,12 @@ python -m chapters.ch07_errors
 2. Try a 1000-line file as input to a tool. Where does the limit hit?
 3. **Adversarial test:** craft a prompt that makes claude infinite-loop on a buggy tool.
 
+## 📚 References
+
+- [Anthropic — Tool errors](https://docs.anthropic.com/en/docs/build-with-claude/tool-use#handling-tool-use-and-tool-result-content-blocks) — the `is_error: true` field
+- [AWS Builders' Library — Timeouts, retries, and backoff with jitter](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/) — patterns that apply to agent retry logic
+- [Reliable software with retries — Marc Brooker](https://brooker.co.za/blog/2015/03/21/backoff.html) — exponential backoff math
+
 ## 🚀 Next
 
 [Chapter 08 — System prompts](ch08_system_prompts.md): what goes in `system` vs `messages`?

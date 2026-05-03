@@ -86,6 +86,13 @@ python -m chapters.ch08c_prompt_caching
 3. Compute break-even arithmetic: at what call count does 1-hour TTL beat 5-minute, given reuse every 8 minutes?
 4. **Find the bug:** in `agent.py`, what's the threshold for the default model? Verify the system prompt clears it after AGENT.md loads.
 
+## 📚 References
+
+- [Anthropic — Prompt caching](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching) — the canonical reference (read this twice)
+- [Anthropic — Cache breakpoints](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching#cache-breakpoints) — the 4-marker constraint
+- [Anthropic — Extended (1-hour) cache](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching#1-hour-cache-duration) — the daemon TTL
+- [Pricing page — caching costs](https://www.anthropic.com/pricing) — current write/read multipliers
+
 ## 🚀 Next
 
 [Chapter 09 — Sessions](ch09_sessions.md): a conversation that survives `Ctrl-C`.

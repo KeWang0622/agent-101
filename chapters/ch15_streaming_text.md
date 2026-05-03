@@ -62,6 +62,13 @@ python -m chapters.ch15_streaming_text "explain the agent loop in 3 sentences"
 2. Compare wall-clock time vs non-streaming version. Same total time; different UX.
 3. Add a typing-cursor character (`█`) that flickers between deltas.
 
+## 📚 References
+
+- [Anthropic — Streaming messages](https://docs.anthropic.com/en/api/messages-streaming) — every event type
+- [SSE — Server-Sent Events spec (WHATWG)](https://html.spec.whatwg.org/multipage/server-sent-events.html) — the underlying protocol
+- [Anthropic SDK — issue tracker (streaming)](https://github.com/anthropics/anthropic-sdk-typescript/issues?q=streaming) — community foot-guns
+- [comparing streaming response structures across providers](https://medium.com/percolation-labs/comparing-the-streaming-response-structure-for-different-llm-apis-2b8645028b41) — Anthropic vs OpenAI vs Gemini SSE shapes
+
 ## 🚀 Next
 
 [Chapter 16 — Streaming tool_use](ch16_streaming_tools.md): the hard chapter.

@@ -59,6 +59,12 @@ python -m chapters.ch02_messages_array
 2. After turn 3, `print(json.dumps(messages, default=str, indent=2))`. Read the array.
 3. Force the role-alternation 400 by appending two user messages in a row. See the error.
 
+## 📚 References
+
+- [Anthropic — Messages API: roles](https://docs.anthropic.com/en/api/messages#roles) — the alternation rule, formalized
+- [OpenAI — Conversation state](https://platform.openai.com/docs/guides/responses) — same idea in a different vendor's vocabulary
+- [Why Claude forgets — claudelab.net](https://claudelab.net/en/articles/claude-ai/claude-forgets-context-conversation-memory-fix) — the typical reader's first frustration
+
 ## 🚀 Next
 
-[Chapter 03 — Stop reasons](ch03_stop_reasons.md): the loop is `while True`. The way OUT is `stop_reason`. There are six values.
+[Chapter 03 — Stop reasons](ch03_stop_reasons.md): the loop is `while True`. The way OUT is `stop_reason`. There are seven values.

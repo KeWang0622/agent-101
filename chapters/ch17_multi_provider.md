@@ -65,6 +65,14 @@ python -m chapters.ch17_multi_provider
 2. Add a 4th provider (Mistral, DeepSeek, or Cohere). ~50 LOC.
 3. **Build:** Make `agent.py` multi-provider via a `--provider` flag.
 
+## 📚 References
+
+- [docs/ADAPTING.md](../docs/ADAPTING.md) — porting guide with provider-specific gotchas (in this repo)
+- [Anthropic vs OpenAI vs Gemini — tool use comparison](https://www.glukhov.org/post/2025/10/structured-output-comparison-popular-llm-providers/) — side-by-side
+- [OpenAI — Migrate to the Responses API](https://platform.openai.com/docs/guides/migrate-to-responses) — the new API replacing Chat Completions
+- [Gemini — Function calling docs](https://ai.google.dev/gemini-api/docs/function-calling) — official spec
+- [LiteLLM](https://github.com/BerriAI/litellm) — production-grade multi-provider adapter (compare to ours)
+
 ## 🚀 Next
 
 You're done with chapters! Time for [`agent.py`](../agent.py) — read it cover-to-cover. Then [`microsite/`](../microsite/) — use what you built.

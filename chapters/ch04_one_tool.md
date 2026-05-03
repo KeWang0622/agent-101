@@ -67,6 +67,14 @@ python -m chapters.ch04_one_tool "what is 1234 * 5678?"
 2. Set `tool_choice={"type": "tool", "name": "calculator"}`. Watch claude be FORCED to call it.
 3. Print `r.content` after the first call. See text + tool_use blocks coexist.
 
+## 📚 References
+
+- [Anthropic — Tool use overview](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) — official protocol
+- [Anthropic — Handling tool calls](https://docs.anthropic.com/en/agents-and-tools/tool-use/handle-tool-calls) — every constraint, including "tool_result first in content array"
+- [Anthropic — Tool choice](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/tool-choice) — `auto`, `any`, force a specific tool
+- [JSON Schema](https://json-schema.org/) — the spec for `input_schema`
+- [Schick et al. — Toolformer (2023)](https://arxiv.org/abs/2302.04761) — the foundational paper on teaching LLMs to use tools
+
 ## 🚀 Next
 
 [Chapter 05 — THE LOOP](ch05_the_loop.md): formalize this into 6 lines that are every agent on Earth.

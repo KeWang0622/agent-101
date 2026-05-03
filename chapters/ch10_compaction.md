@@ -73,6 +73,13 @@ python -m chapters.ch10_compaction       # forces compaction by stuffing context
 
 `agent.py` — the `compact_messages()` function and its `_is_tool_use_assistant()` helper (around lines 452-494) include the tool_use boundary fix that the raw API would otherwise reject.
 
+## 📚 References
+
+- [Anthropic — Long-context tips](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching) — same doc covers compaction strategies
+- [openclaw — `compaction.ts`](https://github.com/openclaw/openclaw/blob/main/src/agents/compaction.ts) — production version with token-budget trigger and 3 fallback tiers
+- [Hamel Husain — I tracked every token...](https://dev.to/nicolalessi/i-tracked-every-token-my-ai-coding-agent-consumed-for-a-week-70-was-waste-465) — empirical case for compaction
+- [Liu et al. — Lost in the Middle (2023)](https://arxiv.org/abs/2307.03172) — why agents get dumber as context grows
+
 ## 🚀 Next
 
 [Chapter 11 — Subagents](ch11_subagents.md): another way to keep context small — never put it there in the first place.

@@ -59,6 +59,12 @@ python -m chapters.ch09_sessions resume <id>
 2. `tail -f ~/.agent101/sessions/<id>.jsonl` while running. Watch each turn append.
 3. Modify ONE line in the JSONL by hand. Resume. Does it work?
 
+## 📚 References
+
+- [JSON Lines spec](https://jsonlines.org/) — the format we use for sessions
+- [Claude Code session storage](https://docs.anthropic.com/en/docs/claude-code/sessions) — Anthropic's production layout (`~/.claude/projects/...`)
+- [openclaw — session store source](https://github.com/openclaw/openclaw/blob/main/src/config/sessions/store.ts) — production reference: index JSON + per-session JSONL
+
 ## 🚀 Next
 
 [Chapter 10 — Compaction](ch10_compaction.md): the array grows forever. Until it doesn't.

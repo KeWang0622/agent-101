@@ -74,6 +74,14 @@ python -m chapters.ch13_mcp_wire
 2. Wire `mcp_servers/calculator_server.py` into Claude Desktop. Restart. Ask it math.
 3. Write a NEW MCP server — `weather_server.py` — in <100 lines. Connect via [ch14](ch14_mcp_agent.md).
 
+## 📚 References
+
+- [Model Context Protocol — specification](https://spec.modelcontextprotocol.io) — the canonical spec, ~30 pages
+- [Anthropic — MCP launch post](https://www.anthropic.com/news/model-context-protocol) — the conceptual frame
+- [JSON-RPC 2.0 specification](https://www.jsonrpc.org/specification) — the wire protocol MCP wraps
+- [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) — reference servers (filesystem, GitHub, postgres, etc.)
+- [Claude Desktop MCP setup](https://modelcontextprotocol.io/quickstart/user) — wire your custom server into the desktop app
+
 ## 🚀 Next
 
 [Chapter 14 — MCP into the loop](ch14_mcp_agent.md): now wire it through the agent.

@@ -53,6 +53,13 @@ python -m chapters.ch08b_observability "what is 17 * 23?"
 2. Compute cache hit ratio: `cache_read / (cache_read + cache_create)`.
 3. Find your most expensive turn. Why was it expensive?
 
+## 📚 References
+
+- [Anthropic — Pricing](https://www.anthropic.com/pricing) — current per-million-token rates (always check before deploying)
+- [Anthropic — Token counting](https://docs.anthropic.com/en/docs/build-with-claude/token-counting) — `client.messages.count_tokens()` reference
+- [Hamel Husain — I tracked every token my AI coding agent consumed](https://dev.to/nicolalessi/i-tracked-every-token-my-ai-coding-agent-consumed-for-a-week-70-was-waste-465) — 70% of agent spend is preventable
+- [Eugene Yan — Patterns for Building LLM-based Systems & Products](https://eugeneyan.com/writing/llm-patterns/) — observability section
+
 ## 🚀 Next
 
 [Chapter 08c — Prompt caching deep dive](ch08c_prompt_caching.md): the 5× cost lever.

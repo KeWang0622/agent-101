@@ -57,6 +57,13 @@ python -m chapters.ch16_streaming_tools "what's 999 * 999, then a joke about it?
 2. Force a truncation: `max_tokens=20`. Catch the JSON error. Surface a clear message.
 3. Implement a "live tool args" UI that shows the buffer contents as it grows (just for debug).
 
+## 📚 References
+
+- [Anthropic — `input_json_delta` events](https://docs.anthropic.com/en/api/messages-streaming#tool-use) — the partial-JSON protocol
+- [Anthropic SDK — streaming tool use issues](https://github.com/anthropics/anthropic-sdk-python/issues?q=input_json_delta) — community foot-guns
+- [`partial-json-parser` (npm)](https://github.com/promplate/partial-json-parser) — incremental JSON parsing for live UI rendering
+- [Streaming structured output — best practices](https://platform.openai.com/docs/guides/structured-outputs/streaming) — OpenAI's parallel approach (worth comparing)
+
 ## 🚀 Next
 
 [Chapter 17 — Multi-provider](ch17_multi_provider.md): same loop, three wires.
