@@ -1,22 +1,62 @@
 [project]
-name = "agent-101"
+name = "agent-zero-to-hero"
 version = "0.1.0"
-description = "Build an agent harness from raw Anthropic API calls. 12 chapters, ~2000 lines, no frameworks."
+description = "Build a Claude-Code-shaped agent harness from scratch. 19 chapters, ~3,800 lines of Python, no frameworks."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "Ke Wang" }]
+keywords = ["agent", "claude-code", "llm", "tutorial", "from-scratch", "mcp", "anthropic"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 dependencies = [
     "anthropic>=0.40.0",
     "rich>=13.7.0",
+    "httpx>=0.25.0",
 ]
 
 [project.optional-dependencies]
 test = ["pytest>=8.0"]
 
+[project.urls]
+Homepage = "https://github.com/KeWang0622/agent-zero-to-hero"
+Repository = "https://github.com/KeWang0622/agent-zero-to-hero"
+Issues = "https://github.com/KeWang0622/agent-zero-to-hero/issues"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+# This is an educational repo, not a library. We ship the chapter packages
+# so `python -m chapters.ch00_welcome` works after `pip install -e .`.
+[tool.hatch.build.targets.wheel]
+packages = ["chapters", "mcp_servers"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/chapters",
+    "/mcp_servers",
+    "/skills",
+    "/tests",
+    "/microsite",
+    "/runs",
+    "/docs",
+    "/agent.py",
+    "/AGENT.md",
+    "/SYLLABUS.md",
+    "/CONTRIBUTING.md",
+    "/README.md",
+    "/LICENSE",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
