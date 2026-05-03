@@ -160,18 +160,13 @@ Every chapter ends with **Summary**, **Homework**, and **References** (papers + 
 
 ---
 
-<table>
-<tr>
-<td width="32%" valign="top"><img src="assets/mascot-wave.gif" alt="GuiGui waving" width="100%"></td>
-<td valign="top">
+<p align="center">
+  <img src="assets/mascot-wave.gif" alt="GuiGui waving" width="240">
+</p>
 
-### Hi! I'm GuiGui 🐢
+### Hi! I'm GuiGui 🐢 — the mascot for this course
 
-I'm the mascot for this course. The chapters are written in plain prose; I show up in the illustrations to keep the energy up. If you spot me with a graduation cap, you've reached week 7.
-
-</td>
-</tr>
-</table>
+The chapters are written in plain prose; I show up in the illustrations to keep the energy up. If you spot me with a graduation cap, you've reached week 7.
 
 ## 📂 Repo layout
 
