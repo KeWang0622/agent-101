@@ -4,7 +4,7 @@ The three questions every reader asks. Answered in one sentence each.
 
 ### Q: Why not LangChain / LangGraph / CrewAI / AutoGen?
 
-Those are frameworks; this is a textbook. Frameworks tell you *what to type*; agent-101 tells you *what's underneath*. If you understand chapter 5, you understand what every agent framework on Earth is wrapping. Then if you choose to use one, you'll know exactly when it's helping and when it's hiding the bug.
+Those are frameworks; this is a textbook. Frameworks tell you *what to type*; agent-zero-to-hero tells you *what's underneath*. If you understand chapter 5, you understand what every agent framework on Earth is wrapping. Then if you choose to use one, you'll know exactly when it's helping and when it's hiding the bug.
 
 ### Q: Why Anthropic and not OpenAI / Gemini in the main chapters?
 

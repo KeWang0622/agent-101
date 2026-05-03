@@ -1,4 +1,4 @@
-# agent-101
+# agent-zero-to-hero
 
 This file is loaded automatically by `agent.py`. It tells the agent who it
 is, where it lives, and what it should do.

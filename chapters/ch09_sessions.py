@@ -18,7 +18,7 @@ why JSONL not JSON?
 what you'll learn:
   - storing messages on disk in JSONL
   - resuming a session by replaying the file into messages[]
-  - the `~/.agent101/sessions/` directory layout
+  - the `~/.agent-zero-to-hero/sessions/` directory layout
   - the difference between "session" (on disk) and "messages array" (in memory)
 
 run:
@@ -40,7 +40,7 @@ from anthropic import Anthropic
 
 client = Anthropic()
 MODEL = "claude-sonnet-4-6"
-SESSION_DIR = Path.home() / ".agent101" / "sessions"
+SESSION_DIR = Path.home() / ".agent-zero-to-hero" / "sessions"
 SESSION_DIR.mkdir(parents=True, exist_ok=True)
 
 

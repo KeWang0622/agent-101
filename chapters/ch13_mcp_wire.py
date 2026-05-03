@@ -112,7 +112,7 @@ def main():
         init_result = mcp.call("initialize", {
             "protocolVersion": "2024-11-05",
             "capabilities": {},
-            "clientInfo": {"name": "agent-101", "version": "0.1.0"},
+            "clientInfo": {"name": "agent-zero-to-hero", "version": "0.1.0"},
         })
         print(f"  server: {init_result['serverInfo']}")
         print(f"  capabilities: {init_result.get('capabilities')}")

@@ -8,7 +8,7 @@ at it — set in their MCP config:
   {
     "mcpServers": {
       "calculator": {"command": "python",
-                     "args": ["/path/to/agent-101/mcp_servers/calculator_server.py"]}
+                     "args": ["/path/to/agent-zero-to-hero/mcp_servers/calculator_server.py"]}
     }
   }
 

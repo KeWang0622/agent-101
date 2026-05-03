@@ -152,7 +152,7 @@ _RULES = [
      "self-contained and atomic; JSON requires reading the whole file to "
      "append, and crash mid-write corrupts the array — JSONL crashes are local"),
     ("AGENT.md discovery: walk up from cwd, root-first, deepest-last",
-     "this lets users override globally via ~/.agent101/AGENT.md, project-wide "
+     "this lets users override globally via ~/.agent-zero-to-hero/AGENT.md, project-wide "
      "via repo-root AGENT.md, and per-directory by dropping nested AGENT.md "
      "files — closest-wins shadowing matches every dev's intuition"),
     ("permissions: ask | allow | deny — gate all Write/Edit/Bash",
@@ -194,7 +194,7 @@ _RULES = [
 ]
 
 LONG_SYSTEM = (
-    "You are agent-101, a careful coding agent. Be precise and terse.\n"
+    "You are agent-zero-to-hero, a careful coding agent. Be precise and terse.\n"
     "You have a calculator tool. Use it for any arithmetic. Show your work.\n\n"
     "Detailed conventions (long enough to clear Sonnet 4.6's 2,048-token threshold):\n\n"
     + "\n\n".join(f"  rule {i}: {short}\n    why: {long}"
@@ -347,7 +347,7 @@ def main():
     print("     TWO reads for 1-hour cache vs uncached.")
     print("  5. cache things that DON'T change. system + tools + AGENT.md = yes.")
     print("     timestamps, request-ids, user-specific data = no.")
-    print("  6. agent.py turns this on by default. AGENT101_NO_CACHE=1 to disable.")
+    print("  6. agent.py turns this on by default. AZH_NO_CACHE=1 to disable.")
 
 
 if __name__ == "__main__":

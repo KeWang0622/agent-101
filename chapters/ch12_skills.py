@@ -94,7 +94,7 @@ def build_skills_prompt(catalog: dict) -> str:
 def agent_loop(prompt: str):
     catalog = load_catalog()
     system = (
-        "You are agent-101 with access to skills. Use read_skill() before "
+        "You are agent-zero-to-hero with access to skills. Use read_skill() before "
         "starting any task that matches a skill description.\n\n"
         + build_skills_prompt(catalog)
     )

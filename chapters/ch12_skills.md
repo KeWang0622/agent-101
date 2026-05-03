@@ -47,7 +47,7 @@ Here's the trick. The model **never sees the skill bodies in the system prompt**
 
 ```
 SYSTEM PROMPT (always loaded, ~300 tokens):
-  You are agent-101 with access to skills.
+  You are agent-zero-to-hero with access to skills.
 
   Available skills:
     - haiku-master: How to write a proper haiku. Use when the user asks for a haiku.

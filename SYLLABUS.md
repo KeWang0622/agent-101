@@ -1,6 +1,6 @@
 # SYLLABUS
 
-> *agent-101: Build a Claude-Code-shaped agent harness from scratch.*
+> *agent-zero-to-hero: Build a Claude-Code-shaped agent harness from scratch.*
 > A 7-week, problem-set-driven course in agent engineering.
 > No prerequisites beyond Python 3.10. No frameworks.
 > Designed to be run by anyone — independent learners, study groups, or universities.
@@ -212,6 +212,6 @@ If you teach this course at a university, a bootcamp, or a study group:
 - Tests run in 0.6 seconds without API keys, so labs are CI-friendly.
 - The `assets/launch.tape` script generates a clean classroom demo.
 - A class of 25 students costs roughly $50 in API spend over 7 weeks (the speedrun is ~$0.50, the capstone is ~$5–$10).
-- We recommend pairing the course with one Karpathy "Zero to Hero" lecture per week as background reading on neural networks themselves — agent-101 is *complementary* to model-internals courses, not a replacement.
+- We recommend pairing the course with one Karpathy "Zero to Hero" lecture per week as background reading on neural networks themselves — agent-zero-to-hero is *complementary* to model-internals courses, not a replacement.
 
 If you adopt this for a course, [open an issue](https://github.com/KeWang0622/agent-zero-to-hero/issues) and we'll add your school to the README.

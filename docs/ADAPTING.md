@@ -1,4 +1,4 @@
-# Adapting agent-101 to OpenAI or Gemini
+# Adapting agent-zero-to-hero to OpenAI or Gemini
 
 Chapters 1–16 use Anthropic. Chapter 17 shows you the adapter pattern that
 makes the same agent loop run on OpenAI and Gemini. This doc is a quick

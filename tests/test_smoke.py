@@ -9,7 +9,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 os.environ.setdefault("ANTHROPIC_API_KEY", "sk-ant-fake-for-tests")
-os.environ["AGENT101_PERMISSION"] = "allow"      # auto-approve in tests
+os.environ["AZH_PERMISSION"] = "allow"      # auto-approve in tests
 
 
 def _load_agent():

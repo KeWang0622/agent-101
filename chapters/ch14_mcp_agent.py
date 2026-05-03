@@ -62,7 +62,7 @@ class MCPClient:
         self.proc.call("initialize", {
             "protocolVersion": "2024-11-05",
             "capabilities": {},
-            "clientInfo": {"name": "agent-101", "version": "0.1.0"},
+            "clientInfo": {"name": "agent-zero-to-hero", "version": "0.1.0"},
         })
         self.proc.notify("notifications/initialized")
         self.tools = self.proc.call("tools/list")["tools"]
