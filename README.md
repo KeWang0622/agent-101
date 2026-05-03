@@ -15,6 +15,14 @@
   <a href="https://github.com/KeWang0622/agent-zero-to-hero/stargazers"><img src="https://img.shields.io/github/stars/KeWang0622/agent-zero-to-hero?style=flat-square" alt="stars"></a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/KeWang0622/agent-zero-to-hero/raw/main/assets/explainer.mp4">
+    <img src="assets/launch.gif" alt="agent.py demo" width="80%">
+  </a>
+</p>
+
+> 📺 **75-second narrated walkthrough**: [`assets/explainer.mp4`](assets/explainer.mp4) (click the GIF or open directly).
+
 ## ⚡ Run it in 30 seconds (no API key)
 
 ```bash
