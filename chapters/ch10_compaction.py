@@ -49,7 +49,7 @@ from anthropic import Anthropic
 
 
 client = Anthropic()
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-6"
 
 # claude sonnet 4.5 has a 200k context. trigger compaction at 60% input usage.
 CONTEXT_WINDOW = 200_000

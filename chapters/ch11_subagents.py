@@ -38,7 +38,7 @@ from anthropic import Anthropic
 
 
 client = Anthropic()
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-6"
 
 
 # --- the subagent's own tools (small set, focused) ----------------------

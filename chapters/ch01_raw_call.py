@@ -29,7 +29,7 @@ import urllib.request
 
 
 API_URL = "https://api.anthropic.com/v1/messages"
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-6"
 
 
 def call(prompt: str) -> dict:

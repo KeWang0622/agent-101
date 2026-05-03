@@ -182,7 +182,7 @@ Try these without running code. Self-grade by reading the relevant chapters.
 
 1. *(short)* What's the difference between `stop_reason` and `finish_reason`?
 2. *(short)* Why must `tool_result` immediately follow `tool_use`?
-3. *(short)* What is the minimum input length for prompt caching to engage on Sonnet 4.5?
+3. *(short)* What is the minimum input length for prompt caching to engage on Sonnet 4.6?
 4. *(short)* OpenAI's `tool_call.arguments` is what type?
 5. *(short)* What is the canonical 6-line agent loop?
 6. *(medium)* When would you use a subagent instead of compaction?

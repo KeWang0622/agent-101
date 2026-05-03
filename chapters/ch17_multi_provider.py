@@ -72,7 +72,7 @@ class Provider(Protocol):
 # --- Anthropic ----------------------------------------------------------
 
 class AnthropicProvider:
-    def __init__(self, model="claude-sonnet-4-5"):
+    def __init__(self, model="claude-sonnet-4-6"):
         self.model = model
 
     def complete(self, messages, tools, system):

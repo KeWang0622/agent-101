@@ -18,7 +18,7 @@ The most important: **`content` is a LIST of blocks**, not a string. Even when i
 import json, os, urllib.request
 
 body = json.dumps({
-    "model": "claude-sonnet-4-5", "max_tokens": 1024,
+    "model": "claude-sonnet-4-6", "max_tokens": 1024,
     "messages": [{"role": "user", "content": "what is an agent?"}],
 }).encode()
 

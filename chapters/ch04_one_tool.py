@@ -28,7 +28,7 @@ from anthropic import Anthropic
 
 
 client = Anthropic()
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-6"
 
 # a tool definition is just a dict. `input_schema` is JSON Schema — the model
 # uses it to decide when to call this tool and what args to pass.

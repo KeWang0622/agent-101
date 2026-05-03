@@ -29,7 +29,7 @@ from anthropic import Anthropic
 
 
 client = Anthropic()  # picks up ANTHROPIC_API_KEY from env
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-6"
 
 
 def chat_loop():

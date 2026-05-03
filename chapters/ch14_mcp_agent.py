@@ -45,7 +45,7 @@ from ch13_mcp_wire import MCPProcess
 
 
 client = Anthropic()
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-6"
 SERVER_PATH = Path(__file__).resolve().parent.parent / "mcp_servers" / "calculator_server.py"
 
 

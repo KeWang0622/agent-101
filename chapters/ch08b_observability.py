@@ -37,7 +37,7 @@ from anthropic import Anthropic
 
 
 client = Anthropic()
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-6"
 
 # claude sonnet 4.5 prices, USD per 1M tokens, april 2026.
 # always check https://www.anthropic.com/pricing — these dates fast.

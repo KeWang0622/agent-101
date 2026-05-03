@@ -66,7 +66,7 @@ run 5, full read:   $0.0010   in=13     cw=0      cr=1576  ← 5× cheaper
 
 **Cache poisoning.** Embedding `datetime.now()` in your system prompt → cache miss every turn → you pay the write price (1.25×) AND never read. Cache the stable prefix. Vary the tail.
 
-**Threshold mismatch.** Code that worked on Sonnet 4.5 (1,024 threshold) silently no-ops on Opus 4.6 (4,096 threshold). Always verify `cache_read_input_tokens > 0` after deploying.
+**Threshold mismatch.** Code that worked on Sonnet 4.5 (1,024 threshold) silently no-ops on Sonnet 4.6 (2,048 threshold) or Opus 4.6 (4,096 threshold). Always verify `cache_read_input_tokens > 0` after upgrading models.
 
 ## ✅ Summary
 

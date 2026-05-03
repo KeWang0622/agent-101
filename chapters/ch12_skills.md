@@ -96,7 +96,7 @@ API replies:
 
 | Approach | System prompt tokens | Per-turn input cost (5 skills × 3000 tokens) |
 |---|---|---|
-| **All skills eager-loaded** | 15,000+ | $0.045 every turn (Sonnet 4.5) |
+| **All skills eager-loaded** | 15,000+ | $0.045 every turn (Sonnet 4.6) |
 | **Catalog + on-demand** | ~500 | $0.0015 every turn + $0.009 ONCE when a skill loads |
 
 50-turn session, no skills used: **~$2.25 vs ~$0.075**. **30× cheaper** — and you got the same persona budget, you just didn't pay for procedural knowledge you didn't need.

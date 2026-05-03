@@ -85,7 +85,7 @@ This dates fast. Always check the provider's pricing page.
 | Tier | Anthropic | OpenAI | Gemini |
 |---|---|---|---|
 | Cheap/fast | Haiku 4.5 (~$1/$5 per M) | GPT-5 mini (~$0.25/$2) | Gemini 2.0 Flash (~$0.10/$0.40) |
-| Default | Sonnet 4.5 ($3/$15) | GPT-4o ($2.50/$10) | Gemini 2.5 Pro ($1.25/$5) |
+| Default | Sonnet 4.6 ($3/$15) | GPT-5 mini ($0.25/$2) | Gemini 2.5 Flash ($0.075/$0.30) |
 | Flagship | Opus 4.7 ($15/$75) | GPT-5 ($15/$60) | Gemini 3 Pro ($2/$12) |
 
 ## Recommended default

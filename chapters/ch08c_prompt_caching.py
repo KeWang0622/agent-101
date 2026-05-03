@@ -12,7 +12,7 @@ three things you must know:
   1. THE THRESHOLD (varies by model).
      anthropic doesn't cache anything below a minimum input size:
        Sonnet 4.5 / 4 / 3.7    → 1,024 tokens
-       Sonnet 4.6              → 2,048 tokens
+       Sonnet 4.6 (default)    → 2,048 tokens
        Opus 4.5 / 4.6 / 4.7    → 4,096 tokens
        Haiku 4.5               → 4,096 tokens
        Haiku 3.5               → 2,048 tokens
@@ -53,9 +53,10 @@ from anthropic import Anthropic
 
 
 client = Anthropic()
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-6"
 
-# claude sonnet 4.5 prices, USD per 1M tokens, april 2026.
+# claude sonnet 4.6 prices, USD per 1M tokens (current 2026 — verify on
+# https://www.anthropic.com/pricing). 4.6 has the same prices as 4.5.
 P = {
     "input":          3.00,
     "output":        15.00,
@@ -65,10 +66,14 @@ P = {
 }
 
 
-# we need a system prompt > 1024 tokens for caching to engage on Sonnet/Opus
-# (Haiku is 2048). real agents have AGENT.md, extensive tool definitions,
-# and skill catalogs that clear this naturally. for the demo, we pad with
-# verbose conventions — count the tokens with anthropic.tokenizer if curious.
+# caching threshold is per-model:
+#   Sonnet 4.5 / 4 / 3.7  → 1,024 tokens
+#   Sonnet 4.6 (default)  → 2,048 tokens   ← what this file uses
+#   Opus 4.5+ / Haiku 4.5 → 4,096 tokens
+#   Haiku 3.5             → 2,048 tokens
+# real agents have AGENT.md, system + tool definitions, and skill catalogs
+# that clear all of these naturally. for the demo, we pad with verbose
+# conventions to clear Sonnet 4.6's 2,048-token threshold.
 _RULES = [
     ("always read a file before editing it",
      "the Edit tool requires you to know the exact bytes you're replacing; "
@@ -158,12 +163,40 @@ _RULES = [
      "a stronger model doesn't change the loop; a different provider doesn't "
      "change the loop; the loop is `while True { call → dispatch → continue }`, "
      "and once you can write it from memory you can read every coding agent's source"),
+    ("compaction is surgery, not garbage collection",
+     "you replace the older half of messages with one synthetic user message "
+     "summarizing them; the model can't tell anything happened, the array "
+     "shrinks 60x, and the loop continues — pure substitution"),
+    ("subagents are agent loops with a fresh messages[], called as a tool",
+     "the parent's context stays small because the subagent's exploration is "
+     "INVISIBLE to the parent — only the final string returns; this is the "
+     "load-bearing trick of every production coding agent"),
+    ("MCP tools are routed by the mcp__server__name prefix",
+     "the agent loop dispatches by the prefix in tool_use.name: anything "
+     "starting with mcp__ goes to the matching MCPClient.call_tool, anything "
+     "else hits the local handler dict — same loop, two routing paths"),
+    ("streaming protocol uses 6 SSE events plus ping and error",
+     "message_start / content_block_start / content_block_delta / "
+     "content_block_stop / message_delta / message_stop are the data events; "
+     "ping is a keepalive between them; error is a server-side problem"),
+    ("AGENT.md content + system + tool definitions = the cacheable prefix",
+     "real production agents have AGENT.md (~3KB), a system prompt (~1KB), "
+     "and 5-10 tool definitions (~1.5KB) — totaling ~5KB which clears every "
+     "current model's caching threshold; the demo here just emulates it"),
+    ("descriptions are load-bearing — the model picks tools by reading them",
+     "a tool with description 'Helps with code' will be ignored; the same tool "
+     "with 'Debug N+1 queries — use when user mentions slow page loads' will "
+     "be picked reliably; you spend more time on descriptions than on the loop"),
+    ("forward-compat: handle unknown stop_reasons and unknown SSE events",
+     "anthropic adds new values over time (model_context_window_exceeded was "
+     "added in Sonnet 4.5; thinking_delta arrived with extended thinking); "
+     "your code should log+continue on unknowns, not raise"),
 ]
 
 LONG_SYSTEM = (
     "You are agent-101, a careful coding agent. Be precise and terse.\n"
     "You have a calculator tool. Use it for any arithmetic. Show your work.\n\n"
-    "Detailed conventions (long enough to cross the 1024-token caching threshold):\n\n"
+    "Detailed conventions (long enough to clear Sonnet 4.6's 2,048-token threshold):\n\n"
     + "\n\n".join(f"  rule {i}: {short}\n    why: {long}"
                   for i, (short, long) in enumerate(_RULES))
 ).strip()
@@ -275,7 +308,7 @@ def demo_tools():
 
 def demo_backfire():
     print("\n=== 4. when caching BACKFIRES ===\n")
-    print("scenario A: system below 1024 tokens — silent no-op.")
+    print("scenario A: system below the model's threshold (2,048 for Sonnet 4.6) — silent no-op.")
     short = [
         {"type": "text", "text": "you are a calculator.",
          "cache_control": {"type": "ephemeral"}},

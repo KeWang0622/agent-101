@@ -27,7 +27,7 @@ run:
 
 env:
   ANTHROPIC_API_KEY         (required)
-  AGENT101_MODEL            (default: claude-sonnet-4-5)
+  AGENT101_MODEL            (default: claude-sonnet-4-6)
   AGENT101_PERMISSION       ask | allow | deny  (default: ask)
   AGENT101_NO_CACHE         set to 1 to disable prompt caching
 
@@ -59,16 +59,16 @@ from rich.panel import Panel
 # 1. config
 # ============================================================
 
-MODEL = os.environ.get("AGENT101_MODEL", "claude-sonnet-4-5")
+MODEL = os.environ.get("AGENT101_MODEL", "claude-sonnet-4-6")
 MAX_TURNS = 50
 SESSION_DIR = Path.home() / ".agent101" / "projects"
 DEFAULT_PERMISSION = os.environ.get("AGENT101_PERMISSION", "ask")  # ask|allow|deny
 USE_CACHE = os.environ.get("AGENT101_NO_CACHE") != "1"
 USE_STREAM = True
 
-# claude sonnet 4.5 prices, USD per 1M tokens (current 2026; verify on
-# https://www.anthropic.com/pricing — these change). if you change MODEL,
-# update PRICES too — or set AGENT101_MODEL_PRICES env.
+# claude sonnet 4.6 prices, USD per 1M tokens (current 2026; verify on
+# https://www.anthropic.com/pricing — these change). same as 4.5. if you
+# change MODEL, update PRICES too — or set AGENT101_MODEL_PRICES env.
 PRICES = {
     "input":            3.00,
     "output":          15.00,
