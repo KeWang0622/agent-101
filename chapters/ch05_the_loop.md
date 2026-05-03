@@ -160,7 +160,7 @@ turn 4 → TodoWrite([... all completed ...]) + final answer
 
 The plan is now **observable, debuggable, and self-correcting**. If something breaks mid-run, you can read the todos to see where claude was. Drop in error rates of ~30% on real coding tasks.
 
-`agent.py` ships TodoWrite — see line 154.
+`agent.py` ships TodoWrite — handler at line 156, schema at line 206.
 
 ### 3. Plan mode (hardest) — separate two-phase agent
 A *separate* read-only loop produces a plan document. A human approves. A *second* loop with write access executes it. Out of scope for this chapter; see Claude Code's plan-mode UI for the canonical implementation.
@@ -197,7 +197,7 @@ python -m chapters.ch05_the_loop "what's the biggest python file in chapters/?"
 
 ## Where this shows up in agent.py
 
-`agent.py` — the `agent_turn` function (around line 629) is the same six lines, plus streaming, plus retries, plus permissions, plus session writes. The `TodoWrite` tool is registered in the default TOOLS list (line 154) and the system prompt explicitly tells claude to use it for multi-step work (lines 526-540).
+`agent.py` — the `agent_turn` function (around line 629) is the same six lines, plus streaming, plus retries, plus permissions, plus session writes. The `TodoWrite` schema is at line 206 in the TOOLS list, the handler is at line 156, and the system prompt tells claude to use it for multi-step work (lines 526-546; the TodoWrite rule is at line 535).
 
 ## 📚 References
 

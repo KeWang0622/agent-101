@@ -56,7 +56,7 @@ python -m chapters.ch08_system_prompts
 
 - [Anthropic — System prompts](https://docs.anthropic.com/en/docs/build-with-claude/system-prompts) — official guide
 - [Anthropic — Prompt engineering overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) — the canonical prompt techniques
-- [Anthropic — `developer` role for OpenAI compatibility](https://platform.openai.com/docs/guides/text-generation) — note: OpenAI deprecated `system` in favor of `developer` (2026)
+- [OpenAI — text generation guide](https://platform.openai.com/docs/guides/text-generation) — note the `developer` role replacing `system` for o-series / GPT-5+ models
 
 ## 🚀 Next
 

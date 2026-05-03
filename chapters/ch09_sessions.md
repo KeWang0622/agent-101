@@ -57,6 +57,7 @@ python -m chapters.ch09_sessions resume <id>
 
 1. Verify the resumed session remembers your prior turns.
 2. `tail -f ~/.agent101/sessions/<id>.jsonl` while running. Watch each turn append.
+   *(Note: production `agent.py` namespaces by cwd — `~/.agent101/projects/<slug>/<id>.jsonl`.)*
 3. Modify ONE line in the JSONL by hand. Resume. Does it work?
 
 ## 📚 References

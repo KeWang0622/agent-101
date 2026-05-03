@@ -51,7 +51,9 @@ That's the surgery. One LLM call. Replace the older half. Resume the loop.
 
 ## ⚠️ Watch out for
 
-**The orphan tool_use.** Summarizing a slice that ENDS on an assistant tool_use breaks the API (the matching tool_result is now in the discarded part). Fix: walk back until the older slice ends on a safe message.
+**The compaction-boundary orphan.** Summarizing a slice that ENDS on an assistant `tool_use` breaks the API on the next call: the matching `tool_result` is now in the discarded part. Fix: walk back until the older slice ends on a safe message (text-only assistant, or a user turn).
+
+**First message must be `role: "user"`.** The synthetic summary is a user message for this reason — don't be tempted to make it `role: "assistant"`. The API rejects assistant-first.
 
 ## ✅ Summary
 
@@ -75,7 +77,8 @@ python -m chapters.ch10_compaction       # forces compaction by stuffing context
 
 ## 📚 References
 
-- [Anthropic — Long-context tips](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching) — same doc covers compaction strategies
+- [Anthropic — How we built our multi-agent research system](https://www.anthropic.com/engineering/built-multi-agent-research-system) — production lessons including context management
+- [Anthropic — Prompt caching](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching) — related cost lever (different concern but same chapter family)
 - [openclaw — `compaction.ts`](https://github.com/openclaw/openclaw/blob/main/src/agents/compaction.ts) — production version with token-budget trigger and 3 fallback tiers
 - [Hamel Husain — I tracked every token...](https://dev.to/nicolalessi/i-tracked-every-token-my-ai-coding-agent-consumed-for-a-week-70-was-waste-465) — empirical case for compaction
 - [Liu et al. — Lost in the Middle (2023)](https://arxiv.org/abs/2307.03172) — why agents get dumber as context grows

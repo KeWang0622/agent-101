@@ -17,7 +17,11 @@ event: content_block_delta    ← repeats with text fragments
 event: content_block_stop
 event: message_delta          ← final stop_reason here
 event: message_stop
+event: ping                   ← keepalive between events; ignore
+event: error                  ← server-side error (e.g. overloaded_error); handle
 ```
+
+Forward-compat note: Anthropic may add new event types. Your parser should handle unknown events gracefully — log them and skip rather than raise.
 
 ## Show me the code
 

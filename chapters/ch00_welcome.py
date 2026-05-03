@@ -25,6 +25,8 @@ but the whole shape is right here. read it once.
 run:
   export ANTHROPIC_API_KEY=sk-ant-...
   python -m chapters.ch00_welcome "what's 17 * 23 then read README.md and tell me what this repo does"
+
+next: ch01 — strip out the SDK and see one HTTP request with your own eyes.
 """
 
 import os

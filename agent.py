@@ -66,8 +66,9 @@ DEFAULT_PERMISSION = os.environ.get("AGENT101_PERMISSION", "ask")  # ask|allow|d
 USE_CACHE = os.environ.get("AGENT101_NO_CACHE") != "1"
 USE_STREAM = True
 
-# claude sonnet 4.5 prices, USD per 1M tokens, april 2026.
-# update if you change MODEL — or set AGENT101_MODEL_PRICES env.
+# claude sonnet 4.5 prices, USD per 1M tokens (current 2026; verify on
+# https://www.anthropic.com/pricing — these change). if you change MODEL,
+# update PRICES too — or set AGENT101_MODEL_PRICES env.
 PRICES = {
     "input":            3.00,
     "output":          15.00,

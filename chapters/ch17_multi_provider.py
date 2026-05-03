@@ -117,6 +117,8 @@ class OpenAIProvider:
         self.model = model
 
     def complete(self, messages, tools, system):
+        # Chat Completions: "system" still works for back-compat. New code on
+        # o-series / GPT-5+ should prefer "developer". Both are accepted today.
         msgs = [{"role": "system", "content": system}]
         for m in messages:
             msgs.append(self._msg(m))

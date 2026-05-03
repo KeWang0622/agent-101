@@ -90,6 +90,8 @@ API replies:
 
 **Two API calls. The skill body was loaded once.** Compare to the alternative: putting all 3 skills' bodies into the system prompt forever — every turn pays for 5,000 tokens of skill content even when no skill is relevant.
 
+> **Note on Anthropic's official Skills feature.** Anthropic shipped a [first-party Skills system in October 2025](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) that uses the **Bash tool** to read `SKILL.md` from disk — there's no dedicated `read_skill` tool. The mechanism is identical (catalog in system prompt, body loaded on demand as a `tool_result`); we use a custom `read_skill` tool here to keep the example self-contained without requiring the Bash sandbox. Conceptually it's the same chapter.
+
 ## The cost math
 
 | Approach | System prompt tokens | Per-turn input cost (5 skills × 3000 tokens) |
@@ -166,7 +168,7 @@ python -m chapters.ch12_skills
 ## 📚 References
 
 - [Anthropic — Equipping agents with Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) — the official launch post
-- [Simon Willison — Claude Skills are maybe a bigger deal than MCP](https://simonwillison.net/2024/Oct/16/claude-skills/) — why this chapter exists
+- [Simon Willison — Claude Skills are maybe a bigger deal than MCP](https://simonwillison.net/2025/Oct/16/claude-skills/) — why this chapter exists
 - [Anthropic — Claude Code skills directory](https://docs.anthropic.com/en/docs/claude-code/skills) — the canonical SKILL.md format
 - [openclaw — `skills/` directory](https://github.com/openclaw/openclaw/tree/main/skills) — production examples worth copying
 

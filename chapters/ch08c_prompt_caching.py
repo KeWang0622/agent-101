@@ -223,8 +223,9 @@ def demo_basic():
 
 def demo_ttl():
     print("\n=== 2. 5-minute vs 1-hour TTL ===\n")
-    # 1-hour TTL costs 2x to write but lasts 12x longer.
-    # break-even: ~12 calls. for long-running daemons, always 1h.
+    # 1-hour TTL costs 2x input to write (vs 1.25x for 5-min) but lasts 12x longer.
+    # break-even: ONE cache read for 5-min vs uncached; TWO cache reads for 1-hour.
+    # use 1-hour when reuse spans multiple 5-minute windows (e.g. long sessions).
     one_hour_system = [
         {"type": "text", "text": LONG_SYSTEM,
          "cache_control": {"type": "ephemeral", "ttl": "1h"}},

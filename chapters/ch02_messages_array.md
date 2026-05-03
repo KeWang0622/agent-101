@@ -56,7 +56,7 @@ python -m chapters.ch02_messages_array
 ```
 
 1. Multi-turn chat: tell it your favorite color. Two turns later, ask "what's my favorite color?". Confirm it remembers.
-2. After turn 3, `print(json.dumps(messages, default=str, indent=2))`. Read the array.
+2. After turn 3, add `import json` then `print(json.dumps(messages, default=str, indent=2))`. Read the array.
 3. Force the role-alternation 400 by appending two user messages in a row. See the error.
 
 ## 📚 References

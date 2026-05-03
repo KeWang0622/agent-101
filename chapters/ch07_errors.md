@@ -14,7 +14,7 @@ Four classes of failure your loop will see in production:
 |---|---|---|
 | Tool raised | `FileNotFoundError`, timeout, division by zero | Catch, return error string, set `is_error: true` |
 | Unknown tool name | Model hallucinates a tool that doesn't exist | Return `"unknown tool: X"`, `is_error: true` |
-| Wrong arguments | Missing required field, wrong type | Same as raise — return the validation error |
+| Wrong arguments | Missing required field, wrong type | Same as raise — return the validation error. ([Anthropic also offers `strict: true` on tool definitions to eliminate this class entirely](https://platform.claude.com/docs/en/agents-and-tools/tool-use/strict-tool-use).) |
 | Wrong stop_reason | `refusal`, `max_tokens` | Don't hide — surface to user (see [ch03](ch03_stop_reasons.md)) |
 
 Errors flow back as `tool_result` content. Claude reads them, apologizes, tries something else. The conversation continues.
