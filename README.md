@@ -57,6 +57,39 @@ Not for you if you want a plug-and-play framework. Use [LangGraph](https://githu
 
 ---
 
+## 📑 All 20 chapters
+
+Each chapter is one Python file (`chapters/chNN_topic.py`) + a matching learning page (`chapters/chNN_topic.md`). Read the `.md`, run the `.py`, do the homework.
+
+| # | Chapter | What you'll learn |
+|---|---|---|
+| 00 | [welcome](chapters/ch00_welcome.md) | A complete working agent in 30 lines. The whole shape, in 5 minutes. |
+| 01 | [raw_call](chapters/ch01_raw_call.md) | One HTTP POST. The Messages API. No SDK. |
+| 02 | [messages_array](chapters/ch02_messages_array.md) | The API is stateless. The `messages` array IS the memory. |
+| 03 | [stop_reasons](chapters/ch03_stop_reasons.md) | The seven ways out of the loop. Handle each correctly. |
+| 04 | [one_tool](chapters/ch04_one_tool.md) | The `tool_use` → `tool_result` protocol. One round-trip. |
+| **05** | **[the_loop](chapters/ch05_the_loop.md)** | **THE LOOP.** Six lines. Decomposition, ReAct, planning. The pivot chapter. |
+| 06 | [parallel_tools](chapters/ch06_parallel_tools.md) | Multiple tool_use blocks in one turn. The single-user-message rule. |
+| 07 | [errors](chapters/ch07_errors.md) | Tool errors as content. `is_error: true`. Refusals. |
+| 08 | [system_prompts](chapters/ch08_system_prompts.md) | What goes in `system` vs `messages`. Persona that survives compaction. |
+| 08b | [observability](chapters/ch08b_observability.md) | The dollar ticker. `response.usage` × prices = no bill shock. |
+| **08c** | **[prompt_caching](chapters/ch08c_prompt_caching.md)** | **The 5× cost lever.** 1024-token threshold, breakpoints, TTL, foot-guns. |
+| 09 | [sessions](chapters/ch09_sessions.md) | JSONL on disk. Resume after `Ctrl-C`. |
+| **10** | **[compaction](chapters/ch10_compaction.md)** | **The chapter that pays for itself.** Surgery, not GC. |
+| 11 | [subagents](chapters/ch11_subagents.md) | Context isolation as a feature. 10× cheaper. |
+| 12 | [skills](chapters/ch12_skills.md) | Markdown loaded on demand. Progressive disclosure. |
+| **13** | **[mcp_wire](chapters/ch13_mcp_wire.md)** | **MCP demystified** — JSON-RPC over stdio with three method calls. |
+| 14 | [mcp_agent](chapters/ch14_mcp_agent.md) | Wire your own MCP server into the agent loop. |
+| 15 | [streaming_text](chapters/ch15_streaming_text.md) | SSE basics. Render text deltas as they arrive. |
+| 16 | [streaming_tools](chapters/ch16_streaming_tools.md) | `input_json_delta` accumulation. The hard chapter. |
+| 17 | [multi_provider](chapters/ch17_multi_provider.md) | Same loop, three wires (Anthropic / OpenAI / Gemini). |
+| ★ | **[agent.py](agent.py)** | The climax. ~840-line Claude-Code-shaped CLI built from chapter primitives. |
+| ★ | **[microsite/](microsite/)** | The capstone. Build a working website from one prompt. |
+
+Every chapter ends with **Summary**, **Homework**, and **References** (papers + docs + reference repos).
+
+---
+
 ## 📅 How to take this course
 
 | | Pace | Time / week | Total |
