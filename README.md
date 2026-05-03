@@ -92,9 +92,27 @@ python microsite/build_site.py "a Brooklyn ramen shop called Sazae"
 
 ## 🎬 The agent loop
 
-<p align="center">
-  <img src="assets/loop.png" alt="The agent loop" width="80%">
-</p>
+```mermaid
+flowchart LR
+    User([👤 user prompt]) --> Msgs[/messages array<br/><i>ch02 · the only memory</i>/]
+    Msgs --> Model[the model<br/><i>claude · openai · gemini<br/>ch01 · ch17</i>]
+    Tools[🔧 tools<br/><i>ch04-06</i>] -.-> Model
+    Skills[📜 skills<br/><i>ch12</i>] -.-> Model
+    MCP[🔌 MCP servers<br/><i>ch13-14</i>] -.-> Model
+    Model --> Stop{stop_reason?<br/><i>ch03</i>}
+    Stop -- end_turn --> Answer([💬 final answer<br/><i>saved to session.jsonl · ch09</i>])
+    Stop -- tool_use --> Run[run all tools<br/>append tool_results]
+    Run --> Msgs
+    style Msgs fill:#1e1e2e,stroke:#89b4fa,color:#89b4fa
+    style Model fill:#1e1e2e,stroke:#cba6f7,color:#cba6f7
+    style Stop fill:#1e1e2e,stroke:#f9e2af,color:#f9e2af
+    style Answer fill:#1e1e2e,stroke:#94e2d5,color:#94e2d5
+    style Run fill:#1e1e2e,stroke:#f9e2af,color:#f9e2af
+    style Tools fill:#1e1e2e,stroke:#a6e3a1,color:#a6e3a1
+    style Skills fill:#1e1e2e,stroke:#fab387,color:#fab387
+    style MCP fill:#1e1e2e,stroke:#f5c2e7,color:#f5c2e7
+    style User fill:#313244,stroke:#cdd6f4,color:#cdd6f4
+```
 
 This is the entire shape of every coding agent. The model is stateless; the messages array is the only memory. Tools, skills, sessions, MCP — they're how the **harness** extends the model. They're not the agent. **The loop is.**
 
