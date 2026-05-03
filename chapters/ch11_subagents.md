@@ -36,13 +36,16 @@ Register it as a tool in the parent's TOOLS list. Done.
 
 ## Cost math
 
+The big win is on the PARENT's context, not total tokens. With a subagent the parent stays small and stays sharp:
+
 | | Single agent | With subagent |
 |---|---|---|
-| Per-turn input | 50,000 tokens | 5,000 tokens (parent) |
-| 10 turns | 500K tokens | 50K parent + 250K subagent (dies after) |
-| Total cost | $1.50 | $0.30 |
+| Parent input per turn | 50,000 tokens | **5,000 tokens** |
+| 10 turns of parent | 500K tokens | 50K tokens — **10× smaller** |
+| Total tokens (incl. subagent) | 500K | ~300K |
+| Total cost @ Sonnet rates | $1.50 | $0.90 (no caching) |
 
-**10× cheaper.** And the parent stays sharp.
+With prompt caching on the subagent's stable prefix, the gap widens further. The conceptual win — *parent context stays uncluttered* — matters more than the dollar count: a 5K-token parent thinks better than a 50K-token parent.
 
 ## ⚠️ Watch out for
 

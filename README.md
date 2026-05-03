@@ -13,7 +13,7 @@
 
 # agent-zero-to-hero
 
-> **A 7-week course in agent engineering. Build a Claude-Code-shaped CLI agent from one HTTP call to a working website builder. ~4,500 lines of Python. 19 chapters. Zero frameworks.**
+> **A 7-week course in agent engineering. Build a Claude-Code-shaped CLI agent from one HTTP call to a working website builder. ~3,800 lines of Python. 19 chapters. Zero frameworks.**
 
 <table>
 <tr>

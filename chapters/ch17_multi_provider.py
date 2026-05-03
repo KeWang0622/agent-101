@@ -13,12 +13,14 @@ the differences (which the adapter hides):
 
   field           | anthropic     | openai         | gemini
   ----------------+---------------+----------------+--------------------
-  system          | top-level     | first message  | system_instruction
+  system          | top-level     | role:"developer"| system_instruction
+                  |               | (was "system") |
   tool schema     | input_schema  | parameters     | parameters (OpenAPI)
   tool result     | user msg w/   | role:"tool"    | functionResponse
                   | tool_result   | + tool_call_id |   part
   args type       | parsed object | JSON STRING    | parsed object
   stop on tool    | "tool_use"    | "tool_calls"   | scan parts (no flag)
+  asst role       | "assistant"   | "assistant"    | "model" (NOT "assistant")
 
 what you'll learn:
   - the Provider protocol (one interface, three impls)
@@ -111,7 +113,7 @@ class AnthropicProvider:
 # --- OpenAI -------------------------------------------------------------
 
 class OpenAIProvider:
-    def __init__(self, model="gpt-4o-mini"):
+    def __init__(self, model="gpt-5-mini"):                 # gpt-4o-mini deprecated
         self.model = model
 
     def complete(self, messages, tools, system):
@@ -155,7 +157,7 @@ class OpenAIProvider:
 # --- Gemini -------------------------------------------------------------
 
 class GeminiProvider:
-    def __init__(self, model="gemini-2.0-flash-exp"):
+    def __init__(self, model="gemini-2.5-flash"):            # 2.0-flash-exp deprecated June 2026
         self.model = model
 
     def complete(self, messages, tools, system):

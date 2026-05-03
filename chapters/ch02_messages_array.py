@@ -14,12 +14,12 @@ in a variable and re-sent it.
 what you'll learn:
   - alternating user/assistant role pattern
   - how to append the assistant's reply back into messages
-  - why the array grows linearly (and why that becomes a problem — see ch09)
+  - why the array grows linearly (and why that becomes a problem — see ch10)
 
 run:
   python -m chapters.ch02_messages_array
 
-next: ch03 — streaming (so you see tokens as they arrive, not all at once).
+next: ch03 — stop reasons (the way OUT of the loop).
 """
 
 import os
@@ -67,7 +67,7 @@ def chat_loop():
                 print(f"\nclaude> {block.text}")
 
         # the messages array now has 2N items after N turns. notice how
-        # quickly it grows. that's chapter 9 (compaction).
+        # quickly it grows. that's chapter 10 (compaction).
         print(f"  [messages.len={len(messages)}, "
               f"in={response.usage.input_tokens}, "
               f"out={response.usage.output_tokens}]", file=sys.stderr)

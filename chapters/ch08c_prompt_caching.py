@@ -9,10 +9,13 @@ meter. now we go deep.
 
 three things you must know:
 
-  1. THE THRESHOLD.
+  1. THE THRESHOLD (varies by model).
      anthropic doesn't cache anything below a minimum input size:
-       sonnet/opus  → 1024 tokens
-       haiku        → 2048 tokens
+       Sonnet 4.5 / 4 / 3.7    → 1,024 tokens
+       Sonnet 4.6              → 2,048 tokens
+       Opus 4.5 / 4.6 / 4.7    → 4,096 tokens
+       Haiku 4.5               → 4,096 tokens
+       Haiku 3.5               → 2,048 tokens
      below the threshold, cache_control is silently ignored. cache_r stays 0.
      this is the #1 reason "i tried caching, didn't see savings."
 
@@ -23,9 +26,12 @@ three things you must know:
      order matters: system → tools → messages. cache the things that change LEAST.
 
   3. THE TTL.
-     ephemeral cache lives ~5 minutes. for longer-lived agents, use
-     cache_control={"type": "ephemeral", "ttl": "1h"} (1-hour TTL, 2x the
-     write cost of 5-minute, breaks even after ~12 calls).
+     ephemeral cache lives ~5 minutes by default. for long-running daemons:
+     cache_control={"type": "ephemeral", "ttl": "1h"} (1-hour TTL).
+     5-min writes cost 1.25x input; 1-hour writes cost 2x input; reads 0.1x.
+     break-even: ONE cache read pays back the 5-min write premium; TWO reads
+     pay back the 1-hour premium (vs uncached). use 1-hour when reuse spans
+     multiple 5-minute windows.
 
 what you'll learn:
   - placing cache breakpoints on system, tools, and the conversation prefix
@@ -55,7 +61,7 @@ P = {
     "output":        15.00,
     "cache_5m_w":     3.75,    # 5-min ephemeral writes (1.25x input)
     "cache_1h_w":     6.00,    # 1-hour writes (2x input)
-    "cache_r":        0.30,    # reads — 90% cheaper than fresh input
+    "cache_r":        0.30,    # reads — 0.1x input (90% cheaper)
 }
 
 
@@ -290,16 +296,24 @@ def main():
     demo_basic()
     print("\n[wait 1s for cache to warm...]")
     time.sleep(1)
+    demo_ttl()
     demo_tools()
     demo_backfire()
 
     print("\n=== takeaways ===")
-    print("  1. system prompt > 1024 tokens. otherwise caching is a no-op.")
+    print("  1. minimum cacheable prompt size depends on the model:")
+    print("       Sonnet 4.5 / 4 / 3.7    → 1,024 tokens")
+    print("       Sonnet 4.6              → 2,048 tokens")
+    print("       Opus 4.5+ · Haiku 4.5   → 4,096 tokens")
+    print("       Haiku 3.5               → 2,048 tokens")
+    print("     below the threshold, cache_control is silently ignored.")
     print("  2. cache_control on the LAST item of system/tools you want stable.")
-    print("  3. 5-min default; 1-hour for daemons (2x write, 12x lifetime).")
-    print("  4. cache things that DON'T change. system + tools + AGENT.md = yes.")
+    print("  3. 5-min cache writes 1.25x; 1-hour writes 2x; reads 0.1x of input.")
+    print("  4. break-even: ONE read for 5-min cache vs uncached;")
+    print("     TWO reads for 1-hour cache vs uncached.")
+    print("  5. cache things that DON'T change. system + tools + AGENT.md = yes.")
     print("     timestamps, request-ids, user-specific data = no.")
-    print("  5. agent.py turns this on by default. AGENT101_NO_CACHE=1 to disable.")
+    print("  6. agent.py turns this on by default. AGENT101_NO_CACHE=1 to disable.")
 
 
 if __name__ == "__main__":

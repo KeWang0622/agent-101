@@ -178,7 +178,7 @@ The wire-format chapters. Streaming text + accumulating tool_use partial JSON + 
 
 ## Final exam questions (sample)
 
-Try these without running code. Answers in [docs/EXAM_KEY.md](docs/EXAM_KEY.md).
+Try these without running code. Self-grade by reading the relevant chapters.
 
 1. *(short)* What's the difference between `stop_reason` and `finish_reason`?
 2. *(short)* Why must `tool_result` immediately follow `tool_use`?

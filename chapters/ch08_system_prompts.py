@@ -30,7 +30,7 @@ what you'll learn:
 run:
   python -m chapters.ch08_system_prompts
 
-next: ch09 — sessions on disk (jsonl).
+next: ch08b — observability (the dollar ticker).
 """
 
 import os

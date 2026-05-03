@@ -27,7 +27,7 @@ what you'll learn:
 run:
   python -m chapters.ch08b_observability "what's 17 * 23?"
 
-next: ch09 — sessions on disk (jsonl + resume).
+next: ch08c — prompt caching, deep version.
 """
 
 import os

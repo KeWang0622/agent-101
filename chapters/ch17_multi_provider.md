@@ -6,13 +6,16 @@
 
 We've used Anthropic everywhere because its tool-use shape is the cleanest. But every primitive maps to OpenAI and Gemini. This is the chapter that proves the loop is provider-independent. After it, swap providers with a constructor argument.
 
-## The 3 foot-guns
+## The 4 foot-guns
 
 | | Anthropic | OpenAI | Gemini |
 |---|---|---|---|
 | Tool args type | parsed object | **JSON STRING** | parsed object |
 | Tool stop reason | `"tool_use"` | `"tool_calls"` | **none — scan parts** |
-| System prompt | top-level field | first message | `system_instruction` |
+| System prompt | top-level field | first message, `role: "developer"` (was `"system"`) | `system_instruction` |
+| Assistant role string | `"assistant"` | `"assistant"` | **`"model"` (rejects `"assistant"`)** |
+
+**Bonus foot-gun:** OpenAI now has TWO APIs — Chat Completions (the older format above) and Responses API (the recommended one for new projects, with native tools and server-side state). The two have different shapes; this chapter uses Chat Completions because it's still the most common.
 
 ## Show me the code
 

@@ -67,7 +67,7 @@ python -m chapters.ch05_the_loop "what's the biggest python file in chapters/?"
 
 ## Where this shows up in agent.py
 
-`agent.py:541-617` — same six lines, plus streaming, plus retries, plus permissions, plus session writes. Read the production version side by side.
+`agent.py` — the `agent_turn` function (around line 629) is the same six lines, plus streaming, plus retries, plus permissions, plus session writes. Read the production version side by side.
 
 ## 🚀 Next
 

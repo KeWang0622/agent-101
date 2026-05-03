@@ -1,6 +1,6 @@
 # Chapter 00 — Welcome 🐢
 
-> **A complete agent in 30 lines. Read it once. The next 17 chapters explain why it works.**
+> **A complete agent in 30 lines. Read it once. The next 19 chapters explain why it works.**
 
 ## 🐢 GuiGui says
 

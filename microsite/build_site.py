@@ -11,10 +11,10 @@ uses every primitive built in chapters 1–17:
   - the agent loop (ch05)
   - parallel tool calls (ch06) — write multiple files at once
   - errors (ch07) — graceful degradation when CSS parses fail
-  - system prompt (ch08) — the "landing-page" skill is loaded
+  - system prompt (ch08) — points at landing-page conventions
+  - prompt caching (ch08c) — system + tools cached
   - sessions (ch09) — replays the build later if needed
-  - subagents (ch11) — one for HTML, one for the copy
-  - skills (ch12) — landing-page/SKILL.md gets loaded automatically
+  - cost meter (ch08b) — every turn metered, total at end
 
 at the end, the agent runs `open index.html` (macOS) or `xdg-open` (linux).
 """

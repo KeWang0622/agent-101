@@ -8,7 +8,7 @@ might surprise you with how little is going on.
 
 what you'll learn:
   - the messages API endpoint
-  - the four required fields (model, max_tokens, messages, system)
+  - the three required fields (model, max_tokens, messages); system is optional
   - the response shape (content blocks, stop_reason, usage)
   - that the API is STATELESS. it has no memory of any prior call.
 

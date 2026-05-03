@@ -1,7 +1,7 @@
 # microsite — the capstone
 
 The 30-second demo. Build a landing page from a one-line prompt using the
-`agent.py` you wrote in chapter 18.
+`agent.py` you wrote across chapters 1–17.
 
 ## Run
 
@@ -26,7 +26,7 @@ python ../agent.py
 > the menu cards should be bigger and the palette warmer
 ```
 
-The agent edits `index.html` in place. The browser auto-reloads.
+The agent edits `index.html` in place. Reload the browser to see changes.
 
 ## Why this is the capstone
 

@@ -71,7 +71,7 @@ python -m chapters.ch10_compaction       # forces compaction by stuffing context
 
 ## Where this shows up in agent.py
 
-`agent.py:421-448` — including the tool_use boundary fix that the API rejected without.
+`agent.py` — the `compact_messages()` function and its `_is_tool_use_assistant()` helper (around lines 452-494) include the tool_use boundary fix that the raw API would otherwise reject.
 
 ## 🚀 Next
 

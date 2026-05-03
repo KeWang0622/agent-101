@@ -49,6 +49,8 @@ if r.stop_reason == "tool_use":
 
 **The orphan tool_use.** `400 tool_use ids did not have corresponding tool_result blocks`. Every `tool_use` in an assistant message MUST be followed by a user message with a matching `tool_result`. No interleaving.
 
+**The text-before-tool_result trap.** `tool_result` blocks must come FIRST in the user message's content array. A "Here are the results:" preamble before a `tool_result` block returns 400. If you want narration, put it AFTER the tool_results.
+
 ## ✅ Summary
 
 - A tool is a JSON-Schema-described function the model can REQUEST.

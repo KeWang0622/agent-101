@@ -98,7 +98,7 @@ def agent_loop(prompt: str):
             messages.append({"role": "user", "content": tool_results})
             continue
 
-        # any other stop_reason: bail. ch04 covers what they mean.
+        # any other stop_reason: bail. ch03 covers what they mean.
         raise RuntimeError(f"unexpected stop_reason: {r.stop_reason}")
 
 

@@ -15,12 +15,24 @@ the SSE protocol for text-only is simple. you'll see these event types:
   content_block_stop       — end of the block
   message_delta            — usage updates / final stop_reason
   message_stop             — done
+  ping                     — keepalive between events; ignore
+  error                    — server-side error (e.g. overloaded_error); handle
+
+content_block_delta sub-types you'll see:
+  text_delta               — render immediately
+  input_json_delta         — accumulate (ch16)
+  thinking_delta           — extended-thinking models (ignore unless you've
+                             enabled the `thinking` parameter)
+  signature_delta          — tail of a thinking block, just before stop
 
 we parse SSE by hand from `urllib`. the SDK has a helper, but reading the
 bytes once builds the right intuition.
 
 CRITICAL — text deltas you can render immediately. tool_use deltas you CANNOT
 (they're partial JSON). that's ch16.
+
+forward-compat: anthropic may add new event types. handle unknown events
+gracefully — log them and skip rather than raise.
 
 run:
   python -m chapters.ch15_streaming_text "explain TCP in one sentence"

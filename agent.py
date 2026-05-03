@@ -71,8 +71,9 @@ USE_STREAM = True
 PRICES = {
     "input":            3.00,
     "output":          15.00,
-    "cache_creation":   3.75,    # 5-minute TTL writes
-    "cache_read":       0.30,    # 90% cheaper than input
+    "cache_creation":   3.75,    # 5-minute TTL writes (1.25× input)
+    "cache_creation_1h":6.00,    # 1-hour TTL writes (2× input)
+    "cache_read":       0.30,    # reads — 0.1× input (90% cheaper)
 }
 
 CONTEXT_WINDOW = 200_000
@@ -524,7 +525,7 @@ def with_retries(fn, *args, max_attempts=5, base=1.0, cap=30.0, **kwargs):
 
 DEFAULT_SYSTEM = """\
 You are agent-101, a minimal coding agent that runs in the user's terminal.
-You are an educational reference implementation — about 600 lines of Python
+You are an educational reference implementation — ~840 lines of Python
 wrapping the Anthropic Messages API in a tool-use loop. Be precise and terse.
 
 You have these tools: Read, Write, Edit, Bash, Glob, Grep, TodoWrite.
