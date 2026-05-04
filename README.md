@@ -186,6 +186,14 @@ AGENT.md         project context auto-loaded by agent.py
 
 This course is MIT-licensed and built to be adopted. All chapters are runnable in 30 seconds. 25 students × 7 weeks ≈ $50 in total API spend. See [SYLLABUS.md](SYLLABUS.md) for problem sets, labs, and final exam. [Open an issue](https://github.com/KeWang0622/agent-zero-to-hero/issues) if you adopt this for a class — we'll add your school here.
 
+## 📤 Share-ready images
+
+If you want to tweet about this course, [`assets/share/`](assets/share/) has 8 PNGs designed for screenshot-friendly sharing — the 6-line loop poster, a side-by-side comparison vs LangChain / LangGraph / CrewAI / smolagents, and 6 motto cards in tweet-card aspect ratio. MIT-licensed; attribution appreciated, not required.
+
+<p align="center">
+  <a href="assets/share/the-loop-poster.png"><img src="assets/share/the-loop-poster.png" alt="the agent loop poster" width="80%"></a>
+</p>
+
 ## 📈 Star history
 
 [![Star History Chart](https://api.star-history.com/svg?repos=KeWang0622/agent-zero-to-hero&type=Date)](https://star-history.com/#KeWang0622/agent-zero-to-hero&Date)
